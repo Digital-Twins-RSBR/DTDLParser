@@ -505,6 +505,9 @@
     "dtmi:dtdl:extension:historization;1": {
       "Historized": "dtmi:dtdl:extension:historization:v1:Historized"
     },
+    "dtmi:dtdl:extension:causal;1": {
+      "Causal": "dtmi:dtdl:extension:causal:v1:Causal"
+    },
     "dtmi:dtdl:extension:mqtt;1": {
       "Cacheable": "dtmi:dtdl:extension:mqtt:v1:Cacheable",
       "commandTopic": "dtmi:dtdl:extension:mqtt:v1:Mqtt:commandTopic",
@@ -8409,6 +8412,11 @@
     "dtmi:dtdl:extension:historization;1": {
       "description": {
         "en-us": "Record the historical sequence of values of a Property or Telemetry and the times at which values change."
+      }
+    },
+    "dtmi:dtdl:extension:causal;1": {
+      "description": {
+        "en-us": "Defines that a Property has causal connection with its physical counterpart."
       }
     },
     "dtmi:dtdl:extension:mqtt;1": {
@@ -21241,6 +21249,23 @@
       ],
       "elements": [],
       "extensionContext": "dtmi:dtdl:extension:historization;1",
+      "extensionKind": "AdjunctType",
+      "mergeable": false,
+      "parent": "dtmi:dtdl:class:AdjunctType;3",
+      "properties": {},
+      "siblings": []
+    },
+    "dtmi:dtdl:extension:causal:v1:Causal": {
+      "abstract": false,
+      "constraints": [],
+      "cotypes": [
+        "Property"
+      ],
+      "cotypeVersions": [
+        3
+      ],
+      "elements": [],
+      "extensionContext": "dtmi:dtdl:extension:causal;1",
       "extensionKind": "AdjunctType",
       "mergeable": false,
       "parent": "dtmi:dtdl:class:AdjunctType;3",
