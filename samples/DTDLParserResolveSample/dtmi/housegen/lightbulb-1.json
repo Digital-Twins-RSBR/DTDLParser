@@ -1,0 +1,13 @@
+{
+  "@context": "dtmi:dtdl:context;3",
+  "@id": "dtmi:housegen:LightBulb;1",
+  "@type": "Interface",
+  "displayName": "LightBulb",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "status",
+      "schema": "boolean"
+    }
+  ]
+}
