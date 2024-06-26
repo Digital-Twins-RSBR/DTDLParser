@@ -28,6 +28,7 @@ namespace DTDLParser
             Dtmi dtdlContextIdV3 = new Dtmi("dtmi:dtdl:context;3");
             Dtmi dtdlExtensionAnnotationContextIdV1 = new Dtmi("dtmi:dtdl:extension:annotation;1");
             Dtmi dtdlExtensionHistorizationContextIdV1 = new Dtmi("dtmi:dtdl:extension:historization;1");
+            Dtmi dtdlExtensionCausalContextIdV1 = new Dtmi("dtmi:dtdl:extension:causal;1");
             Dtmi dtdlExtensionMqttContextIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt;1");
             Dtmi dtdlExtensionOverridingContextIdV1 = new Dtmi("dtmi:dtdl:extension:overriding;1");
             Dtmi dtdlExtensionQuantitativeTypesContextIdV1 = new Dtmi("dtmi:dtdl:extension:quantitativeTypes;1");
@@ -47,6 +48,7 @@ namespace DTDLParser
             Dtmi unitAttributeTypeIdV3 = new Dtmi("dtmi:dtdl:class:UnitAttribute;3");
             Dtmi valueAnnotationTypeIdV1 = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation");
             Dtmi historizedTypeIdV1 = new Dtmi("dtmi:dtdl:extension:historization:v1:Historized");
+            Dtmi causalTypeIdV1 = new Dtmi("dtmi:dtdl:extension:causal:v1:Causal");
             Dtmi cacheableTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Cacheable");
             Dtmi idempotentTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Idempotent");
             Dtmi indexedTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Indexed");
@@ -234,6 +236,10 @@ namespace DTDLParser
             DTSupplementalTypeInfo historizedInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionHistorizationContextIdV1, historizedTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
             historizedInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
             historizedInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo causalInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionCausalContextIdV1, causalTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
+            causalInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property };
+            causalInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
 
             DTSupplementalTypeInfo cacheableInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, cacheableTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
             cacheableInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Cacheable:ttl", new Uri("http://www.w3.org/2001/XMLSchema#duration"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
@@ -911,6 +917,7 @@ namespace DTDLParser
             EndogenousSupplementalTypes[semanticUnitTypeIdV3] = semanticUnitInfoV3;
             EndogenousSupplementalTypes[valueAnnotationTypeIdV1] = valueAnnotationInfoV1;
             EndogenousSupplementalTypes[historizedTypeIdV1] = historizedInfoV1;
+            EndogenousSupplementalTypes[causalTypeIdV1] = causalInfoV1;
             EndogenousSupplementalTypes[cacheableTypeIdV1] = cacheableInfoV1;
             EndogenousSupplementalTypes[idempotentTypeIdV1] = idempotentInfoV1;
             EndogenousSupplementalTypes[indexedTypeIdV1] = indexedInfoV1;

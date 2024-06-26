@@ -35,7 +35,8 @@ internal class Program
             Console.WriteLine("Propriedades");
             foreach( var prop in model.Properties)
             {
-                Console.WriteLine($"[P] {prop.Value.Name} - {prop.Value.Schema.EntityKind}\n");
+                var supType = prop.Value.SupplementalTypes.Count <= 0 ? "N" : prop.Value.SupplementalTypes.Single().ToString();
+                Console.WriteLine($"[P] {prop.Value.Name} - {prop.Value.Schema.EntityKind} - {supType}\n");
             }
             Console.WriteLine("Telemetria");
             foreach(var tel in model.Telemetries)
