@@ -46,61 +46,9 @@ namespace ParserWebAPI.Controllers
             return dTDLModel;
         }
 
-        // PUT: api/DTDLModels/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutDTDLModel(string id, DTDLModel dTDLModel)
-        {
-            if (id != dTDLModel.Id)
-            {
-                return BadRequest();
-            }
+        
 
-            _context.Entry(dTDLModel).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!DTDLModelExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/DTDLModels
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<DTDLModel>> PostDTDLModel(DTDLModel dTDLModel)
-        {
-            _context.DTDLModels.Add(dTDLModel);
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException)
-            {
-                if (DTDLModelExists(dTDLModel.Id))
-                {
-                    return Conflict();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return CreatedAtAction("GetDTDLModel", new { id = dTDLModel.Id }, dTDLModel);
-        }
+       
 
         [HttpPost("parse")]
         public async Task<ActionResult<DTDLModel>> ParseDTDLModel([FromBody]  DTDLSpecification model)
