@@ -29,6 +29,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{972CD45A-805
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTDLParser", "src\DTDLParser\DTDLParser.csproj", "{DADA917F-E174-4FC9-BD69-F54A587E4FAA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParserWebAPI", "src\ParserWebAPI\ParserWebAPI.csproj", "{9344F01E-BC1E-42B7-9709-627F82840CAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{DADA917F-E174-4FC9-BD69-F54A587E4FAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADA917F-E174-4FC9-BD69-F54A587E4FAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADA917F-E174-4FC9-BD69-F54A587E4FAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9344F01E-BC1E-42B7-9709-627F82840CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9344F01E-BC1E-42B7-9709-627F82840CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9344F01E-BC1E-42B7-9709-627F82840CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9344F01E-BC1E-42B7-9709-627F82840CAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

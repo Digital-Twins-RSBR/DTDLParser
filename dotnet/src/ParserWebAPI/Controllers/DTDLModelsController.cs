@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParserWebAPI.models;
-using DTDLParserResolveSample;
+using ParserWebAPI.resolver;
 using DTDLParser;
 
 
