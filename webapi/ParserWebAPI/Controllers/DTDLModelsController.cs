@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParserWebAPI.models;
+using DTDLParserResolveSample;
+using DTDLParser;
 
 
 // Implementar a chamada ao parser a partir do envio de uma descrição de modelo(usando string)
@@ -80,6 +82,72 @@ namespace ParserWebAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<DTDLModel>> PostDTDLModel(DTDLModel dTDLModel)
         {
+            _context.DTDLModels.Add(dTDLModel);
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException)
+            {
+                if (DTDLModelExists(dTDLModel.Id))
+                {
+                    return Conflict();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return CreatedAtAction("GetDTDLModel", new { id = dTDLModel.Id }, dTDLModel);
+        }
+
+        [HttpPost("parse")]
+        public async Task<ActionResult<DTDLModel>> ParseDTDLModel([FromBody]  DTDLSpecification model)
+        {
+            var dTDLModel = new DTDLModel();
+            dTDLModel.Id = model.id;
+            dTDLModel.modelElements = new List<ModelElement>();
+            dTDLModel.modelRelationships = new List<ModelRelationship>();
+
+            var result = await ModelResolver.LoadModelAsyncFromString(model.id, model.specification.ToString());
+
+            //Filling properties
+
+            foreach (var prop in result.Properties)
+            {
+                var supType = prop.Value.SupplementalTypes.Count <= 0 ? "N" : prop.Value.SupplementalTypes.Single().ToString();
+                var modelElement = new ModelElement();
+                modelElement.name = prop.Value.Name;
+                modelElement.type = "Property";
+                modelElement.schema = prop.Value.Schema.EntityKind.ToString();
+                modelElement.supplementType = supType;
+                dTDLModel.modelElements.Add(modelElement);
+            }
+
+            //Filling Telemetries
+
+            foreach(var telemetry in result.Telemetries)
+            {
+                var modelElement = new ModelElement();
+                modelElement.name = telemetry.Value.Name;
+                modelElement.type = "Telemetry";
+                modelElement.schema = telemetry.Value.Schema.EntityKind.ToString();
+                var supType = telemetry.Value.SupplementalTypes.Count <= 0 ? "N" : telemetry.Value.SupplementalTypes.Single().ToString();
+                modelElement.supplementType = telemetry.Value.SupplementalTypes.Single().ToString();
+                dTDLModel.modelElements.Add(modelElement);
+            }
+
+            //Filling Relationships
+
+            foreach(var relationship in result.Relationships)
+            {
+                var modelRelationship = new ModelRelationship();
+                modelRelationship.name = relationship.Value.Name;
+                modelRelationship.target = relationship.Value.Target.ToString();
+                dTDLModel.modelRelationships.Add(modelRelationship);
+            }
+
             _context.DTDLModels.Add(dTDLModel);
             try
             {
