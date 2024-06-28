@@ -29,14 +29,20 @@ namespace ParserWebAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<DTDLModel>>> GetDTDLModels()
         {
-            return await _context.DTDLModels.ToListAsync();
+            return await _context.DTDLModels
+                .Include(m => m.modelElements)
+                .Include(m => m.modelRelationships)
+                .ToListAsync();
         }
 
         // GET: api/DTDLModels/5
         [HttpGet("{id}")]
         public async Task<ActionResult<DTDLModel>> GetDTDLModel(string id)
         {
-            var dTDLModel = await _context.DTDLModels.FindAsync(id);
+            var dTDLModel = await _context.DTDLModels
+                .Include(m => m.modelElements)
+                .Include(m => m.modelRelationships)
+                .FirstOrDefaultAsync(m => m.Id == id);
 
             if (dTDLModel == null)
             {
@@ -82,7 +88,7 @@ namespace ParserWebAPI.Controllers
                 modelElement.type = "Telemetry";
                 modelElement.schema = telemetry.Value.Schema.EntityKind.ToString();
                 var supType = telemetry.Value.SupplementalTypes.Count <= 0 ? "N" : telemetry.Value.SupplementalTypes.Single().ToString();
-                modelElement.supplementType = telemetry.Value.SupplementalTypes.Single().ToString();
+                modelElement.supplementType = supType;
                 dTDLModel.modelElements.Add(modelElement);
             }
 
