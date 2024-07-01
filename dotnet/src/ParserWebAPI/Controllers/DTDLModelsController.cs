@@ -52,9 +52,6 @@ namespace ParserWebAPI.Controllers
             return dTDLModel;
         }
 
-        
-
-       
 
         [HttpPost("parse")]
         public async Task<ActionResult<DTDLModel>> ParseDTDLModel([FromBody]  DTDLSpecification model)
@@ -67,6 +64,15 @@ namespace ParserWebAPI.Controllers
             var result = await ModelResolver.LoadModelAsyncFromString(model.id, model.specification.ToString());
 
             //Filling properties
+
+            var indexLastTwoDots = model.id.LastIndexOf(':');
+            var indexFirstSemicolon = model.id.IndexOf(';', indexLastTwoDots);
+            var modelName = indexLastTwoDots != -1 && indexFirstSemicolon != -1 && indexFirstSemicolon > indexLastTwoDots
+                ? model.id.Substring(indexLastTwoDots + 1, indexFirstSemicolon - indexLastTwoDots - 1)
+                : "";
+
+
+            dTDLModel.Name = modelName;
 
             foreach (var prop in result.Properties)
             {
