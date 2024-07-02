@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ParserWebAPI.models;
 using ParserWebAPI.resolver;
 using DTDLParser;
+using Microsoft.CodeAnalysis.CSharp;
 
 
 // Implementar a chamada ao parser a partir do envio de uma descrição de modelo(usando string)
@@ -76,12 +77,15 @@ namespace ParserWebAPI.Controllers
 
             foreach (var prop in result.Properties)
             {
-                var supType = prop.Value.SupplementalTypes.Count <= 0 ? "N" : prop.Value.SupplementalTypes.Single().ToString();
                 var modelElement = new ModelElement();
                 modelElement.name = prop.Value.Name;
                 modelElement.type = "Property";
                 modelElement.schema = prop.Value.Schema.EntityKind.ToString();
-                modelElement.supplementType = supType;
+                modelElement.supplementTypes = new List<string>();
+                foreach (var type in prop.Value.SupplementalTypes)
+                {
+                    modelElement.supplementTypes.Add(type.ToString());
+                }
                 dTDLModel.modelElements.Add(modelElement);
             }
 
@@ -93,8 +97,11 @@ namespace ParserWebAPI.Controllers
                 modelElement.name = telemetry.Value.Name;
                 modelElement.type = "Telemetry";
                 modelElement.schema = telemetry.Value.Schema.EntityKind.ToString();
-                var supType = telemetry.Value.SupplementalTypes.Count <= 0 ? "N" : telemetry.Value.SupplementalTypes.Single().ToString();
-                modelElement.supplementType = supType;
+                modelElement.supplementTypes = new List<string>();
+                foreach (var type in telemetry.Value.SupplementalTypes)
+                {
+                    modelElement.supplementTypes.Add(type.ToString());
+                }
                 dTDLModel.modelElements.Add(modelElement);
             }
 

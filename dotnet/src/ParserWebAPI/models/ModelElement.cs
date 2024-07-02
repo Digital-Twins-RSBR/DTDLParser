@@ -7,6 +7,6 @@
         public string name { get; set; }
         public string schema { get; set; }
 
-        public string supplementType { get; set; }
+        public List<string> supplementTypes { get; set; }
     }
 }
