@@ -41,6 +41,7 @@ namespace DTDLParser
             EndogenousAffiliateContextHistories["dtmi:dtdl:extension:overriding"] = GetAffiliate3ContextHistory();
             EndogenousAffiliateContextHistories["dtmi:dtdl:extension:quantitativeTypes"] = GetAffiliate4ContextHistory();
             EndogenousAffiliateContextHistories["dtmi:iotcentral:context"] = GetAffiliate5ContextHistory();
+            EndogenousAffiliateContextHistories["dtmi:dtdl:extension:causal"] = GetAffiliate6ContextHistory();
         }
 
         private static ContextHistory GetAffiliate0ContextHistory()
@@ -498,6 +499,17 @@ namespace DTDLParser
             context2_0.AddTermDefinition("vector", new Dtmi("dtmi:iotcentral:schema:vector;2"), isMergeableType: false);
             context2_0.AddTermDefinition("VelocityVector", new Dtmi("dtmi:iotcentral:class:VelocityVector;2"), isMergeableType: false);
             versionedContexts.Add(context2_0);
+
+            return new ContextHistory(versionedContexts);
+        }
+
+        private static ContextHistory GetAffiliate6ContextHistory()
+        {
+            List<VersionedContext> versionedContexts = new List<VersionedContext>();
+
+            VersionedContext context1_0 = new VersionedContext("dtmi:dtdl:extension:causal;1", 1, 0, mergeDefinitions: false);
+            context1_0.AddTermDefinition("Causal", new Dtmi("dtmi:dtdl:extension:causal:v1:Causal"), isMergeableType: false);
+            versionedContexts.Add(context1_0);
 
             return new ContextHistory(versionedContexts);
         }

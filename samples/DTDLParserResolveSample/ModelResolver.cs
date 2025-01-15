@@ -3,7 +3,7 @@ using DTDLParser;
 using DTDLParser.Models;
 
 namespace DTDLParserResolveSample;
-internal class ModelResolver
+public class ModelResolver
 {
     public static async Task<DTInterfaceInfo> LoadModelAsync(string dtmi, string dmrBasePath)
     {
@@ -18,4 +18,15 @@ internal class ModelResolver
         var result = await parser.ParseAsync(dtdl.Content[dtmi]);
         return (DTInterfaceInfo)result[id];
     }
+
+    public static async Task<DTInterfaceInfo> LoadModelAsyncFromString(string dtmi, string dtdl)
+    {
+        var parser = new ModelParser();
+        Console.WriteLine($"Parser version: {parser.GetType().Assembly.FullName}\n Resolving dtml id: {dtmi}");
+        var id = new Dtmi(dtmi);
+        var result = await parser.ParseAsync(dtdl);
+        return (DTInterfaceInfo)result[id];
+    }
+
+
 }
