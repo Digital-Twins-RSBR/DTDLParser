@@ -21,6 +21,8 @@ namespace ParserWebAPI.Controllers
     {
         private readonly DTDLModelContext _context;
 
+        private readonly ModelResolver modelResolver = new ModelResolver();
+
         public DTDLModelsController(DTDLModelContext context)
         {
             _context = context;
@@ -63,7 +65,7 @@ namespace ParserWebAPI.Controllers
                 dTDLModel.modelElements = new List<ModelElement>();
                 dTDLModel.modelRelationships = new List<ModelRelationship>();
             try{
-                var result = await ModelResolver.LoadModelAsyncFromString(model.id, model.specification.ToString());
+                var result = await modelResolver.LoadModelAsyncFromString(model.id, model.specification.ToString());
 
                 //Filling properties
 
