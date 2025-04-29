@@ -21,11 +21,16 @@ namespace ParserWebAPI.Controllers
     {
         private readonly DTDLModelContext _context;
 
-        private readonly ModelResolver modelResolver = new ModelResolver();
+        private readonly DTDLSpecificationContext _contextSpecification;
 
-        public DTDLModelsController(DTDLModelContext context)
+        private readonly ModelResolver modelResolver;
+
+        public DTDLModelsController(DTDLModelContext context, DTDLSpecificationContext contextSpecification)
         {
             _context = context;
+            _contextSpecification = contextSpecification;
+            modelResolver = new ModelResolver(_contextSpecification);
+            
         }
 
         // GET: api/DTDLModels
@@ -36,6 +41,14 @@ namespace ParserWebAPI.Controllers
                 .Include(m => m.modelElements)
                 .Include(m => m.modelRelationships)
                 .ToListAsync();
+        }
+
+        // GET: api/DTDLModels/specifications
+        [HttpGet("specifications")]
+        public async Task<ActionResult<IEnumerable<DTDLSpecification>>> GetAllSpecifications()
+        {
+            var specifications = await _contextSpecification.DTDLSpecifications.ToListAsync();
+            return Ok(specifications);
         }
 
         // GET: api/DTDLModels/5

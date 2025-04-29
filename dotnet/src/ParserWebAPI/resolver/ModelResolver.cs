@@ -5,20 +5,33 @@ using System.Collections.Generic;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using System.CodeDom.Compiler;
 using System.Drawing.Printing;
+using ParserWebAPI.models;
 
 namespace ParserWebAPI.resolver
 {
     public class ModelResolver
     {
         private Dictionary<Dtmi, string> modelsDefinitions = new Dictionary<Dtmi, string>();
+        private DTDLSpecificationContext context;
+
+        public ModelResolver(DTDLSpecificationContext _context)
+        {
+            // Initialize the model definitions dictionary if needed
+            modelsDefinitions = new Dictionary<Dtmi, string>();
+            this.context = _context;
+        }
 
         private async IAsyncEnumerable<string> GetJsonTexts(IReadOnlyCollection<Dtmi> dtmis, Dictionary<Dtmi, string> jsonTexts)
         {
+
+
             foreach (Dtmi dtmi in dtmis)
             {
-                if (jsonTexts.TryGetValue(dtmi, out string refJsonText))
+                var dtdlSpecification = context.DTDLSpecifications.FirstOrDefault(m => m.id == dtmi.AbsoluteUri.ToString());
+                var id = dtmi.AbsoluteUri.ToString();
+                if (dtdlSpecification is not null)
                 {
-                    yield return refJsonText;
+                    yield return dtdlSpecification.specification.ToString();
                 }
             }
         }
@@ -26,7 +39,9 @@ namespace ParserWebAPI.resolver
         public async Task<DTInterfaceInfo> LoadModelAsyncFromString(string dtmi, string dtdl)
         {
             var id = new Dtmi(dtmi);
-            modelsDefinitions[id] = dtdl;
+            
+            context.AddOrUpdateSpecification(dtmi, dtdl);
+
             Console.WriteLine(modelsDefinitions);
             var parser = new ModelParser(new ParsingOptions
             {

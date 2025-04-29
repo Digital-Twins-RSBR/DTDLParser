@@ -13,6 +13,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 builder.Services.AddDbContext<DTDLModelContext>(opt => opt.UseInMemoryDatabase("DTDLModels"));
+builder.Services.AddDbContext<DTDLSpecificationContext>(opt => opt.UseInMemoryDatabase("DTDLSpecifications"));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c => 
