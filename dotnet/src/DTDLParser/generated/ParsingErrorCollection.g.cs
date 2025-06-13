@@ -54,9 +54,13 @@ namespace DTDLParser
 
         private static readonly Uri DisallowedCocotypeValidationId = new Uri("dtmi:dtdl:parsingError:disallowedCocotype");
 
+        private static readonly Uri DisallowedContextFragmentValidationId = new Uri("dtmi:dtdl:parsingError:disallowedContextFragment");
+
         private static readonly Uri DisallowedContextVersionValidationId = new Uri("dtmi:dtdl:parsingError:disallowedContextVersion");
 
         private static readonly Uri DisallowedIdFragmentValidationId = new Uri("dtmi:dtdl:parsingError:disallowedIdFragment");
+
+        private static readonly Uri DisallowedLimitContextValidationId = new Uri("dtmi:dtdl:parsingError:disallowedLimitContext");
 
         private static readonly Uri DisallowedLocalContextValidationId = new Uri("dtmi:dtdl:parsingError:disallowedLocalContext");
 
@@ -194,6 +198,8 @@ namespace DTDLParser
 
         private static readonly Uri IntegerValueNotIntegerValidationId = new Uri("dtmi:dtdl:parsingError:integerValueNotInteger");
 
+        private static readonly Uri InvalidContextFragmentValidationId = new Uri("dtmi:dtdl:parsingError:invalidContextFragment");
+
         private static readonly Uri InvalidContextSpecifierForVersionValidationId = new Uri("dtmi:dtdl:parsingError:invalidContextSpecifierForVersion");
 
         private static readonly Uri InvalidContextSpecifierValidationId = new Uri("dtmi:dtdl:parsingError:invalidContextSpecifier");
@@ -294,6 +300,8 @@ namespace DTDLParser
 
         private static readonly Uri MismatchedLayersValidationId = new Uri("dtmi:dtdl:parsingError:mismatchedLayers");
 
+        private static readonly Uri MisplacedLimitContextValidationId = new Uri("dtmi:dtdl:parsingError:misplacedLimitContext");
+
         private static readonly Uri MissingCocotypeValidationId = new Uri("dtmi:dtdl:parsingError:missingCocotype");
 
         private static readonly Uri MissingContextValidationId = new Uri("dtmi:dtdl:parsingError:missingContext");
@@ -317,6 +325,8 @@ namespace DTDLParser
         private static readonly Uri MissingExtensionVersionValidationId = new Uri("dtmi:dtdl:parsingError:missingExtensionVersion");
 
         private static readonly Uri MissingIdentifierPropertyValidationId = new Uri("dtmi:dtdl:parsingError:missingIdentifierProperty");
+
+        private static readonly Uri MissingLimitContextValidationId = new Uri("dtmi:dtdl:parsingError:missingLimitContext");
 
         private static readonly Uri MissingLiteralPropertyValidationId = new Uri("dtmi:dtdl:parsingError:missingLiteralProperty");
 
@@ -355,6 +365,8 @@ namespace DTDLParser
         private static readonly Uri NonConformantPropertyValueValidationId = new Uri("dtmi:dtdl:parsingError:nonConformantPropertyValue");
 
         private static readonly Uri NonDtmiContextSpecifierValidationId = new Uri("dtmi:dtdl:parsingError:nonDtmiContextSpecifier");
+
+        private static readonly Uri NonUniqueAdjunctTypeValidationId = new Uri("dtmi:dtdl:parsingError:nonUniqueAdjunctType");
 
         private static readonly Uri NonUniqueImportedPropertyValueValidationId = new Uri("dtmi:dtdl:parsingError:nonUniqueImportedPropertyValue");
 
@@ -403,6 +415,8 @@ namespace DTDLParser
         private static readonly Uri ObjectCountBelowMinValidationId = new Uri("dtmi:dtdl:parsingError:objectCountBelowMin");
 
         private static readonly Uri ObjectMultipleValuesValidationId = new Uri("dtmi:dtdl:parsingError:objectMultipleValues");
+
+        private static readonly Uri ParentMissingCotypeValidationId = new Uri("dtmi:dtdl:parsingError:parentMissingCotype");
 
         private static readonly Uri PartitionTooLargeValidationId = new Uri("dtmi:dtdl:parsingError:partitionTooLarge");
 
@@ -620,20 +634,21 @@ namespace DTDLParser
 
                     return;
                 case "badDtmiOrTerm":
-                    if (elementId == null || propertyName == null || propertyValue == null)
+                    if (elementId == null || propertyName == null || propertyValue == null || version == null)
                     {
-                        throw new ArgumentException("Missing required parameter elementId or propertyName or propertyValue when generating badDtmiOrTerm ParsingError.");
+                        throw new ArgumentException("Missing required parameter elementId or propertyName or propertyValue or version when generating badDtmiOrTerm ParsingError.");
                     }
 
                     if (incidentProperty != null && incidentProperty.TryGetSourceLocation(out sourceName1, out startLine1) && incidentValue != null && incidentValue.TryGetSourceLocation(out sourceName2, out startLine2, out endLine2))
                     {
                         this.Add(
                             BadDtmiOrTermValidationId,
-                            "In {sourceName1}, property '{property}'{line1} has value '{value}'{line2} that is neither a valid DTMI reference nor a DTDL term.",
-                            "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+                            "In {sourceName1}, property '{property}'{line1} has value '{value}'{line2} that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+                            "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             property: propertyName,
                             value: propertyValue,
+                            restriction: version,
                             layer: layer,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
@@ -646,11 +661,12 @@ namespace DTDLParser
                     {
                         this.Add(
                             BadDtmiOrTermValidationId,
-                            "{layer}{primaryId:p} property '{property}' has value '{value}' that is neither a valid DTMI reference nor a DTDL term.",
-                            "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+                            "{layer}{primaryId:p} property '{property}' has value '{value}' that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+                            "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             property: propertyName,
                             value: propertyValue,
+                            restriction: version,
                             layer: layer);
                     }
 
@@ -1147,6 +1163,35 @@ namespace DTDLParser
                     }
 
                     return;
+                case "disallowedContextFragment":
+                    if (contextValue == null || version == null)
+                    {
+                        throw new ArgumentException("Missing required parameter contextValue or version when generating disallowedContextFragment ParsingError.");
+                    }
+
+                    if (contextComponent != null && contextComponent.TryGetSourceLocation(out sourceName1, out startLine1, out endLine1))
+                    {
+                        this.Add(
+                            DisallowedContextFragmentValidationId,
+                            "In {sourceName1}, @context specifier has value '{value}'{line1}, which includes a fragment, which is not valid for DTDL version {restriction}.",
+                            "Remove the fragment from the @context specifier.",
+                            value: contextValue,
+                            restriction: version,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            DisallowedContextFragmentValidationId,
+                            "@context specifier has value '{value}', which includes a fragment, which is not valid for DTDL version {restriction}.",
+                            "Remove the fragment from the @context specifier.",
+                            value: contextValue,
+                            restriction: version);
+                    }
+
+                    return;
                 case "disallowedContextVersion":
                     if (contextValue == null || version == null)
                     {
@@ -1200,6 +1245,35 @@ namespace DTDLParser
                             "Identifier '{primaryId}' includes a fragment suffix, which is not permitted.",
                             "Remove fragment suffix from identifier.",
                             primaryId: elementId);
+                    }
+
+                    return;
+                case "disallowedLimitContext":
+                    if (contextValue == null || valueRestriction == null)
+                    {
+                        throw new ArgumentException("Missing required parameter contextValue or valueRestriction when generating disallowedLimitContext ParsingError.");
+                    }
+
+                    if (contextComponent != null && contextComponent.TryGetSourceLocation(out sourceName1, out startLine1, out endLine1))
+                    {
+                        this.Add(
+                            DisallowedLimitContextValidationId,
+                            "In {sourceName1}, @context specifier '{value}'{line1} is not an acceptable limit extension.",
+                            "Replace the @context specifier with an acceptable limit context value: {restriction}.",
+                            value: contextValue,
+                            restriction: valueRestriction,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            DisallowedLimitContextValidationId,
+                            "@context specifier '{value}' is not an acceptable limit extension.",
+                            "Replace the @context specifier with an acceptable limit context value: {restriction}.",
+                            value: contextValue,
+                            restriction: valueRestriction);
                     }
 
                     return;
@@ -2475,20 +2549,21 @@ namespace DTDLParser
 
                     return;
                 case "idRefBadDtmiOrTerm":
-                    if (elementId == null || propertyName == null || propertyValue == null)
+                    if (elementId == null || propertyName == null || propertyValue == null || version == null)
                     {
-                        throw new ArgumentException("Missing required parameter elementId or propertyName or propertyValue when generating idRefBadDtmiOrTerm ParsingError.");
+                        throw new ArgumentException("Missing required parameter elementId or propertyName or propertyValue or version when generating idRefBadDtmiOrTerm ParsingError.");
                     }
 
                     if (element != null && element.TryGetSourceLocationForId(out sourceName1, out startLine1))
                     {
                         this.Add(
                             IdRefBadDtmiOrTermValidationId,
-                            "In {sourceName1}, '@id'{line1} has value '{value}' that is neither a valid DTMI reference nor a DTDL term.",
-                            "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+                            "In {sourceName1}, '@id'{line1} has value '{value}' that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+                            "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             property: propertyName,
                             value: propertyValue,
+                            restriction: version,
                             layer: layer,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
@@ -2498,11 +2573,12 @@ namespace DTDLParser
                     {
                         this.Add(
                             IdRefBadDtmiOrTermValidationId,
-                            "{layer}{primaryId:n} has '{property}' value whose '@id' value '{value}' is neither a valid DTMI reference nor a DTDL term.",
-                            "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+                            "{layer}{primaryId:n} has '{property}' value whose '@id' value '{value}' is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+                            "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             property: propertyName,
                             value: propertyValue,
+                            restriction: version,
                             layer: layer);
                     }
 
@@ -2541,14 +2617,14 @@ namespace DTDLParser
 
                     return;
                 case "idTooLong":
-                    if (identifier == null || expectedCount == null || version == null)
+                    if (identifier == null || expectedCount == null || version == null || contextValue == null)
                     {
-                        throw new ArgumentException("Missing required parameter identifier or expectedCount or version when generating idTooLong ParsingError.");
+                        throw new ArgumentException("Missing required parameter identifier or expectedCount or version or contextValue when generating idTooLong ParsingError.");
                     }
 
                     if (element != null && element.TryGetSourceLocationForId(out sourceName1, out startLine1))
                     {
-                        StringBuilder causeBuilder = new StringBuilder("In {sourceName1}, identifier '{value}'{line1} is too long -- length limit is {count1} {item1} for DTDL version {restriction}.");
+                        StringBuilder causeBuilder = new StringBuilder("In {sourceName1}, identifier '{value}'{line1} is too long -- length limit is {count1} {item1} for DTDL version {restriction} with limits from {transformation}.");
                         SetCount(causeBuilder, 1, (int)expectedCount, "character", "characters");
 
                         StringBuilder actionBuilder = new StringBuilder("Select a shorter value for the identifier or trim current value to no more than {count1} {item1}.");
@@ -2560,13 +2636,14 @@ namespace DTDLParser
                             actionBuilder.ToString(),
                             value: identifier,
                             restriction: version,
+                            transformation: contextValue,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
                             endLine1: endLine1);
                     }
                     else
                     {
-                        StringBuilder causeBuilder = new StringBuilder("Identifier '{value}' is too long -- length limit is {count1} {item1} for DTDL version {restriction}.");
+                        StringBuilder causeBuilder = new StringBuilder("Identifier '{value}' is too long -- length limit is {count1} {item1} for DTDL version {restriction} with limits from {transformation}.");
                         SetCount(causeBuilder, 1, (int)expectedCount, "character", "characters");
 
                         StringBuilder actionBuilder = new StringBuilder("Select a shorter value for the identifier or trim current value to no more than {count1} {item1}.");
@@ -2577,7 +2654,8 @@ namespace DTDLParser
                             causeBuilder.ToString(),
                             actionBuilder.ToString(),
                             value: identifier,
-                            restriction: version);
+                            restriction: version,
+                            transformation: contextValue);
                     }
 
                     return;
@@ -3414,6 +3492,33 @@ namespace DTDLParser
                             primaryId: elementId,
                             property: propertyName,
                             layer: layer);
+                    }
+
+                    return;
+                case "invalidContextFragment":
+                    if (contextValue == null)
+                    {
+                        throw new ArgumentException("Missing required parameter contextValue when generating invalidContextFragment ParsingError.");
+                    }
+
+                    if (contextComponent != null && contextComponent.TryGetSourceLocation(out sourceName1, out startLine1, out endLine1))
+                    {
+                        this.Add(
+                            InvalidContextFragmentValidationId,
+                            "In {sourceName1}, @context specifier has value '{value}'{line1}, which includes a fragment other than '#limitless' or '#limits'.",
+                            "Remove the fragment from the @context specifier or replace it with '#limitless' or '#limits'.",
+                            value: contextValue,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            InvalidContextFragmentValidationId,
+                            "@context specifier has value '{value}', which includes a fragment other than '#limitless' or '#limits'.",
+                            "Remove the fragment from the @context specifier or replace it with '#limitless' or '#limits'.",
+                            value: contextValue);
                     }
 
                     return;
@@ -4962,6 +5067,33 @@ namespace DTDLParser
                     }
 
                     return;
+                case "misplacedLimitContext":
+                    if (contextValue == null)
+                    {
+                        throw new ArgumentException("Missing required parameter contextValue when generating misplacedLimitContext ParsingError.");
+                    }
+
+                    if (contextComponent != null && contextComponent.TryGetSourceLocation(out sourceName1, out startLine1, out endLine1))
+                    {
+                        this.Add(
+                            MisplacedLimitContextValidationId,
+                            "In {sourceName1}, @context specifier with value '{value}'{line1} specifies limits but does not immediately follow a DTDL limitless context specifier.",
+                            "Insert a DTDL limitless context specifier immediately before this context specifier.",
+                            value: contextValue,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            MisplacedLimitContextValidationId,
+                            "@context specifier with value '{value}' specifies limits but does not immediately follow a DTDL limitless context specifier.",
+                            "Insert a DTDL limitless context specifier immediately before this context specifier.",
+                            value: contextValue);
+                    }
+
+                    return;
                 case "missingCocotype":
                     if (elementId == null || elementType == null || cotype == null)
                     {
@@ -5285,6 +5417,35 @@ namespace DTDLParser
                             "Add a property '{property}' to the element.",
                             primaryId: elementId,
                             property: propertyName);
+                    }
+
+                    return;
+                case "missingLimitContext":
+                    if (contextValue == null || version == null)
+                    {
+                        throw new ArgumentException("Missing required parameter contextValue or version when generating missingLimitContext ParsingError.");
+                    }
+
+                    if (contextComponent != null && contextComponent.TryGetSourceLocation(out sourceName1, out startLine1, out endLine1))
+                    {
+                        this.Add(
+                            MissingLimitContextValidationId,
+                            "In {sourceName1}, @context specifier has value '{value}'{line1} but is not immediately followed by a context that specifies modeling limits for DTDL version {restriction}.",
+                            "Remove the '#limitless' fragment from the @context specifier or immediately follow this value with another context value that specifies modeling limits for DTDL version {restriction}.",
+                            value: contextValue,
+                            restriction: version,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            MissingLimitContextValidationId,
+                            "@context specifier has value '{value}' but is not immediately followed by a context that specifies modeling limits for DTDL version {restriction}.",
+                            "Remove the '#limitless' fragment from the @context specifier or immediately follow this value with another context value that specifies modeling limits for DTDL version {restriction}.",
+                            value: contextValue,
+                            restriction: version);
                     }
 
                     return;
@@ -5877,6 +6038,39 @@ namespace DTDLParser
                             "@context specifier has value '{value}', which is not a DTMI.",
                             "Remove '{value}' @context specifier.",
                             value: contextValue);
+                    }
+
+                    return;
+                case "nonUniqueAdjunctType":
+                    if (elementId == null || referenceId == null || elementType == null || propertyName == null)
+                    {
+                        throw new ArgumentException("Missing required parameter elementId or referenceId or elementType or propertyName when generating nonUniqueAdjunctType ParsingError.");
+                    }
+
+                    if (element != null && element.TryGetSourceLocationForType(out sourceName1, out startLine1))
+                    {
+                        this.Add(
+                            NonUniqueAdjunctTypeValidationId,
+                            "In {sourceName1}, @type{line1} and @type{line2} both specify supplemental type '{type}', but only one element in the '{property}' array may have this co-type.",
+                            "Remove @type {type} from one of the elements.",
+                            primaryId: elementId,
+                            secondaryId: referenceId,
+                            type: elementType,
+                            property: propertyName,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            NonUniqueAdjunctTypeValidationId,
+                            "{primaryId:n} and {secondaryId:n} both have @type with value '{type}', but only one element in the '{property}' array may have this co-type.",
+                            "Remove @type {type} from one of the elements.",
+                            primaryId: elementId,
+                            secondaryId: referenceId,
+                            type: elementType,
+                            property: propertyName);
                     }
 
                     return;
@@ -6693,6 +6887,39 @@ namespace DTDLParser
                     }
 
                     return;
+                case "parentMissingCotype":
+                    if (elementId == null || elementType == null || referenceType == null || propertyName == null)
+                    {
+                        throw new ArgumentException("Missing required parameter elementId or elementType or referenceType or propertyName when generating parentMissingCotype ParsingError.");
+                    }
+
+                    if (element != null && element.TryGetSourceLocationForType(out sourceName1, out startLine1))
+                    {
+                        this.Add(
+                            ParentMissingCotypeValidationId,
+                            "In {sourceName1}, @type{line1} specifies supplemental type {type}, which may only be used in a '{property}' value of an element co-typed with {restriction}.",
+                            "Remove @type {type} from element, or add @type {restriction} to parent element.",
+                            primaryId: elementId,
+                            type: elementType,
+                            restriction: referenceType,
+                            property: propertyName,
+                            sourceName1: sourceName1,
+                            startLine1: startLine1,
+                            endLine1: endLine1);
+                    }
+                    else
+                    {
+                        this.Add(
+                            ParentMissingCotypeValidationId,
+                            "{primaryId:n} has @type with value {type} that may only be used in a '{property}' value of an element co-typed with {restriction}.",
+                            "Remove @type {type} from element, or add @type {restriction} to parent element.",
+                            primaryId: elementId,
+                            type: elementType,
+                            restriction: referenceType,
+                            property: propertyName);
+                    }
+
+                    return;
                 case "partitionTooLarge":
                     if (elementId == null || partition == null || observedCount == null || expectedCount == null)
                     {
@@ -7051,19 +7278,20 @@ namespace DTDLParser
 
                     return;
                 case "propertyUndefinedTerm":
-                    if (elementId == null || propertyName == null)
+                    if (elementId == null || propertyName == null || version == null)
                     {
-                        throw new ArgumentException("Missing required parameter elementId or propertyName when generating propertyUndefinedTerm ParsingError.");
+                        throw new ArgumentException("Missing required parameter elementId or propertyName or version when generating propertyUndefinedTerm ParsingError.");
                     }
 
                     if (incidentProperty != null && incidentProperty.TryGetSourceLocation(out sourceName1, out startLine1))
                     {
                         this.Add(
                             PropertyUndefinedTermValidationId,
-                            "In {sourceName1}, property '{property}'{line1} is an undefined term.",
-                            "Replace property '{property}' with a string that is either a defined term or a valid DTMI -- see aka.ms/dtmi.",
+                            "In {sourceName1}, property '{property}'{line1} is an undefined term in DTDL v{restriction}.",
+                            "Replace property '{property}' with a string that is either a defined term in DTDL v{restriction} or a valid DTMI -- see aka.ms/dtmi.",
                             primaryId: elementId,
                             property: propertyName,
+                            restriction: version,
                             layer: layer,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
@@ -7073,10 +7301,11 @@ namespace DTDLParser
                     {
                         this.Add(
                             PropertyUndefinedTermValidationId,
-                            "{layer}{primaryId:p} property '{property}' is an undefined term.",
-                            "Replace property '{property}' with a string that is either a defined term or a valid DTMI -- see aka.ms/dtmi.",
+                            "{layer}{primaryId:p} property '{property}' is an undefined term in DTDL v{restriction}.",
+                            "Replace property '{property}' with a string that is either a defined term in DTDL v{restriction} or a valid DTMI -- see aka.ms/dtmi.",
                             primaryId: elementId,
                             property: propertyName,
+                            restriction: version,
                             layer: layer);
                     }
 
@@ -7092,7 +7321,7 @@ namespace DTDLParser
                         this.Add(
                             RecursiveStructureNarrowValidationId,
                             "In {sourceName1}, element{line1} is at the root of a chain of {property} properties that includes itself.",
-                            "Change the value of one or more {property} properties in the hierarchy to remeve the recursion.",
+                            "Change the value of one or more {property} properties in the hierarchy to remove the recursion.",
                             primaryId: elementId,
                             property: propertyDisjunction,
                             sourceName1: sourceName1,
@@ -7104,7 +7333,7 @@ namespace DTDLParser
                         this.Add(
                             RecursiveStructureNarrowValidationId,
                             "{primaryId:n} is at the root of a chain of {property} properties that includes itself.",
-                            "Change the value of one or more {property} properties in the hierarchy to remeve the recursion.",
+                            "Change the value of one or more {property} properties in the hierarchy to remove the recursion.",
                             primaryId: elementId,
                             property: propertyDisjunction);
                     }
@@ -7121,7 +7350,7 @@ namespace DTDLParser
                         this.Add(
                             RecursiveStructureWideValidationId,
                             "In {sourceName1}, element{line1} is at the root of a hierarchy that includes itself.",
-                            "Change the value of one or more properties of elements in the hierarchy to remeve the recursion.",
+                            "Change the value of one or more properties of elements in the hierarchy to remove the recursion.",
                             primaryId: elementId,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
@@ -7132,7 +7361,7 @@ namespace DTDLParser
                         this.Add(
                             RecursiveStructureWideValidationId,
                             "{primaryId:n} is at the root of a hierarchy that includes itself.",
-                            "Change the value of one or more properties of elements in the hierarchy to remeve the recursion.",
+                            "Change the value of one or more properties of elements in the hierarchy to remove the recursion.",
                             primaryId: elementId);
                     }
 
@@ -7790,8 +8019,8 @@ namespace DTDLParser
                     {
                         this.Add(
                             TypeIrrelevantDtmiOrTermValidationId,
-                            "In {sourceName1}, element has @type{line1} that specifies type {value} that is not a DTDL material type or supplemental type.",
-                            "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+                            "In {sourceName1}, element has @type{line1} that specifies type {value} that is not a DTDL v{restriction} material type or supplemental type.",
+                            "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             value: cotype,
                             layer: layer,
@@ -7803,8 +8032,8 @@ namespace DTDLParser
                     {
                         this.Add(
                             TypeIrrelevantDtmiOrTermValidationId,
-                            "{layer}{primaryId:n} has @type that specifies type {value} that is not a DTDL material type or supplemental type.",
-                            "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+                            "{layer}{primaryId:n} has @type that specifies type {value} that is not a DTDL v{restriction} material type or supplemental type.",
+                            "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             value: cotype,
                             layer: layer);
@@ -7872,19 +8101,20 @@ namespace DTDLParser
 
                     return;
                 case "typeUndefinedTerm":
-                    if (elementId == null || cotype == null)
+                    if (elementId == null || cotype == null || version == null)
                     {
-                        throw new ArgumentException("Missing required parameter elementId or cotype when generating typeUndefinedTerm ParsingError.");
+                        throw new ArgumentException("Missing required parameter elementId or cotype or version when generating typeUndefinedTerm ParsingError.");
                     }
 
                     if (element != null && element.TryGetSourceLocationForType(out sourceName1, out startLine1))
                     {
                         this.Add(
                             TypeUndefinedTermValidationId,
-                            "In {sourceName1}, element has @type{line1} that specifies type {value} that is an undefined term.",
-                            "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+                            "In {sourceName1}, element has @type{line1} that specifies type {value} that is an undefined term in DTDL v{restriction}.",
+                            "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             value: cotype,
+                            restriction: version,
                             layer: layer,
                             sourceName1: sourceName1,
                             startLine1: startLine1,
@@ -7894,10 +8124,11 @@ namespace DTDLParser
                     {
                         this.Add(
                             TypeUndefinedTermValidationId,
-                            "{layer}{primaryId:n} has @type that specifies type {value} that is an undefined term.",
-                            "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+                            "{layer}{primaryId:n} has @type that specifies type {value} that is an undefined term in DTDL v{restriction}.",
+                            "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
                             primaryId: elementId,
                             value: cotype,
+                            restriction: version,
                             layer: layer);
                     }
 

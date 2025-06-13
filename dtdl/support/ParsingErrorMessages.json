@@ -13,13 +13,14 @@
     }
   },
   "badDtmiOrTerm": {
-    "cause": "{layer}{primaryId:p} property '{property}' has value '{value}' that is neither a valid DTMI reference nor a DTDL term.",
-    "locatedCause": "In {sourceName1}, property '{property}'{line1} has value '{value}'{line2} that is neither a valid DTMI reference nor a DTDL term.",
-    "action": "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+    "cause": "{layer}{primaryId:p} property '{property}' has value '{value}' that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+    "locatedCause": "In {sourceName1}, property '{property}'{line1} has value '{value}'{line2} that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+    "action": "Replace the value of property '{property}' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
     "required": {
       "primaryId": "elementId",
       "property": "propertyName",
-      "value": "propertyValue"
+      "value": "propertyValue",
+      "restriction": "version"
     },
     "optional": {
       "source1": "incidentProperty",
@@ -244,6 +245,18 @@
       "source1": "typeProp"
     }
   },
+  "disallowedContextFragment": {
+    "cause": "@context specifier has value '{value}', which includes a fragment, which is not valid for DTDL version {restriction}.",
+    "locatedCause": "In {sourceName1}, @context specifier has value '{value}'{line1}, which includes a fragment, which is not valid for DTDL version {restriction}.",
+    "action": "Remove the fragment from the @context specifier.",
+    "required": {
+      "value": "contextValue",
+      "restriction": "version"
+    },
+    "optional": {
+      "source1": "contextComponent"
+    }
+  },
   "disallowedContextVersion": {
     "cause": "@context specifier has value '{value}', which specifies a DTDL version that exceeds the configured max version of {restriction}.",
     "locatedCause": "In {sourceName1}, @context specifier has value '{value}'{line1}, which specifies a DTDL version that exceeds the configured max version of {restriction}.",
@@ -265,6 +278,18 @@
     },
     "optional": {
       "source1": "idProp"
+    }
+  },
+  "disallowedLimitContext": {
+    "cause": "@context specifier '{value}' is not an acceptable limit extension.",
+    "locatedCause": "In {sourceName1}, @context specifier '{value}'{line1} is not an acceptable limit extension.",
+    "action": "Replace the @context specifier with an acceptable limit context value: {restriction}.",
+    "required": {
+      "value": "contextValue",
+      "restriction": "valueRestriction"
+    },
+    "optional": {
+      "source1": "contextComponent"
     }
   },
   "disallowedLocalContext": {
@@ -831,14 +856,16 @@
       "source1": "idProp"
     }
   },
+
   "idRefBadDtmiOrTerm": {
-    "cause": "{layer}{primaryId:n} has '{property}' value whose '@id' value '{value}' is neither a valid DTMI reference nor a DTDL term.",
-    "locatedCause": "In {sourceName1}, '@id'{line1} has value '{value}' that is neither a valid DTMI reference nor a DTDL term.",
-    "action": "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL -- see aka.ms/dtdl.",
+    "cause": "{layer}{primaryId:n} has '{property}' value whose '@id' value '{value}' is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+    "locatedCause": "In {sourceName1}, '@id'{line1} has value '{value}' that is neither a valid DTMI reference nor a DTDL v{restriction} term.",
+    "action": "Replace the value of '@id' with a valid DTMI reference or a term defined by DTDL v{restriction} -- see aka.ms/dtdl.",
     "required": {
       "primaryId": "elementId",
       "property": "propertyName",
-      "value": "propertyValue"
+      "value": "propertyValue",
+      "restriction": "version"
     },
     "optional": {
       "source1": "idProp",
@@ -860,13 +887,14 @@
     }
   },
   "idTooLong": {
-    "cause": "Identifier '{value}' is too long -- length limit is {count1} {item1} for DTDL version {restriction}.",
-    "locatedCause": "In {sourceName1}, identifier '{value}'{line1} is too long -- length limit is {count1} {item1} for DTDL version {restriction}.",
+    "cause": "Identifier '{value}' is too long -- length limit is {count1} {item1} for DTDL version {restriction} with limits from {transformation}.",
+    "locatedCause": "In {sourceName1}, identifier '{value}'{line1} is too long -- length limit is {count1} {item1} for DTDL version {restriction} with limits from {transformation}.",
     "action": "Select a shorter value for the identifier or trim current value to no more than {count1} {item1}.",
     "required": {
       "value": "identifier",
       "count1": "expectedCount",
-      "restriction": "version"
+      "restriction": "version",
+      "transformation": "contextValue"
     },
     "optional": {
       "source1": "idProp"
@@ -1264,6 +1292,17 @@
     "optional": {
       "source1": "incidentValue",
       "layer": "layer"
+    }
+  },
+  "invalidContextFragment": {
+    "cause": "@context specifier has value '{value}', which includes a fragment other than '#limitless' or '#limits'.",
+    "locatedCause": "In {sourceName1}, @context specifier has value '{value}'{line1}, which includes a fragment other than '#limitless' or '#limits'.",
+    "action": "Remove the fragment from the @context specifier or replace it with '#limitless' or '#limits'.",
+    "required": {
+      "value": "contextValue"
+    },
+    "optional": {
+      "source1": "contextComponent"
     }
   },
   "invalidContextSpecifier": {
@@ -1933,6 +1972,17 @@
     },
     "optional": {}
   },
+  "misplacedLimitContext": {
+    "cause": "@context specifier with value '{value}' specifies limits but does not immediately follow a DTDL limitless context specifier.",
+    "locatedCause": "In {sourceName1}, @context specifier with value '{value}'{line1} specifies limits but does not immediately follow a DTDL limitless context specifier.",
+    "action": "Insert a DTDL limitless context specifier immediately before this context specifier.",
+    "required": {
+      "value": "contextValue"
+    },
+    "optional": {
+      "source1": "contextComponent"
+    }
+  },
   "missingCocotype": {
     "cause": "{primaryId:n} has @type with value {type} that can only be co-typed on elements that are also co-typed with {restriction}.",
     "locatedCause": "In {sourceName1}, element has @type{line1} with value {type} that can only be co-typed on elements that are also co-typed with {restriction}.",
@@ -2068,6 +2118,18 @@
     },
     "optional": {
       "source1": "element"
+    }
+  },
+  "missingLimitContext": {
+    "cause": "@context specifier has value '{value}' but is not immediately followed by a context that specifies modeling limits for DTDL version {restriction}.",
+    "locatedCause": "In {sourceName1}, @context specifier has value '{value}'{line1} but is not immediately followed by a context that specifies modeling limits for DTDL version {restriction}.",
+    "action": "Remove the '#limitless' fragment from the @context specifier or immediately follow this value with another context value that specifies modeling limits for DTDL version {restriction}.",
+    "required": {
+      "value": "contextValue",
+      "restriction": "version"
+    },
+    "optional": {
+      "source1": "contextComponent"
     }
   },
   "missingLiteralProperty": {
@@ -2321,6 +2383,20 @@
     },
     "optional": {
       "source1": "contextComponent"
+    }
+  },
+  "nonUniqueAdjunctType": {
+    "cause": "{primaryId:n} and {secondaryId:n} both have @type with value '{type}', but only one element in the '{property}' array may have this co-type.",
+    "locatedCause": "In {sourceName1}, @type{line1} and @type{line2} both specify supplemental type '{type}', but only one element in the '{property}' array may have this co-type.",
+    "action": "Remove @type {type} from one of the elements.",
+    "required": {
+      "primaryId": "elementId",
+      "secondaryId": "referenceId",
+      "type": "elementType",
+      "property": "propertyName"
+    },
+    "optional": {
+      "source1": "typeProp"
     }
   },
   "nonUniqueImportedPropertyValue": {
@@ -2699,6 +2775,20 @@
       "layer": "layer"
     }
   },
+  "parentMissingCotype": {
+    "cause": "{primaryId:n} has @type with value {type} that may only be used in a '{property}' value of an element co-typed with {restriction}.",
+    "locatedCause": "In {sourceName1}, @type{line1} specifies supplemental type {type}, which may only be used in a '{property}' value of an element co-typed with {restriction}.",
+    "action": "Remove @type {type} from element, or add @type {restriction} to parent element.",
+    "required": {
+      "primaryId": "elementId",
+      "type": "elementType",
+      "restriction": "referenceType",
+      "property": "propertyName"
+    },
+    "optional": {
+      "source1": "typeProp"
+    }
+  },
   "partitionTooLarge": {
     "cause": "JSON text of {primaryId} is {count1} {item1} in length, but the largest permissible size is {count2} {item2}.",
     "locatedCause": "In {sourceName1}, JSON text of element{line1} is {count1} {item1} in length, but the largest permissible size is {count2} {item2}.",
@@ -2855,12 +2945,13 @@
     }
   },
   "propertyUndefinedTerm": {
-    "cause": "{layer}{primaryId:p} property '{property}' is an undefined term.",
-    "locatedCause": "In {sourceName1}, property '{property}'{line1} is an undefined term.",
-    "action": "Replace property '{property}' with a string that is either a defined term or a valid DTMI -- see aka.ms/dtmi.",
+    "cause": "{layer}{primaryId:p} property '{property}' is an undefined term in DTDL v{restriction}.",
+    "locatedCause": "In {sourceName1}, property '{property}'{line1} is an undefined term in DTDL v{restriction}.",
+    "action": "Replace property '{property}' with a string that is either a defined term in DTDL v{restriction} or a valid DTMI -- see aka.ms/dtmi.",
     "required": {
       "primaryId": "elementId",
-      "property": "propertyName"
+      "property": "propertyName",
+      "restriction": "version"
     },
     "optional": {
       "source1": "incidentProperty",
@@ -2870,7 +2961,7 @@
   "recursiveStructureNarrow": {
     "cause": "{primaryId:n} is at the root of a chain of {property} properties that includes itself.",
     "locatedCause": "In {sourceName1}, element{line1} is at the root of a chain of {property} properties that includes itself.",
-    "action": "Change the value of one or more {property} properties in the hierarchy to remeve the recursion.",
+    "action": "Change the value of one or more {property} properties in the hierarchy to remove the recursion.",
     "required": {
       "primaryId": "elementId",
       "property": "propertyDisjunction"
@@ -2882,7 +2973,7 @@
   "recursiveStructureWide": {
     "cause": "{primaryId:n} is at the root of a hierarchy that includes itself.",
     "locatedCause": "In {sourceName1}, element{line1} is at the root of a hierarchy that includes itself.",
-    "action": "Change the value of one or more properties of elements in the hierarchy to remeve the recursion.",
+    "action": "Change the value of one or more properties of elements in the hierarchy to remove the recursion.",
     "required": {
       "primaryId": "elementId"
     },
@@ -3173,9 +3264,9 @@
     }
   },
   "typeIrrelevantDtmiOrTerm": {
-    "cause": "{layer}{primaryId:n} has @type that specifies type {value} that is not a DTDL material type or supplemental type.",
-    "locatedCause": "In {sourceName1}, element has @type{line1} that specifies type {value} that is not a DTDL material type or supplemental type.",
-    "action": "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+    "cause": "{layer}{primaryId:n} has @type that specifies type {value} that is not a DTDL v{restriction} material type or supplemental type.",
+    "locatedCause": "In {sourceName1}, element has @type{line1} that specifies type {value} that is not a DTDL v{restriction} material type or supplemental type.",
+    "action": "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
     "required": {
       "primaryId": "elementId",
       "value": "cotype"
@@ -3211,12 +3302,13 @@
     }
   },
   "typeUndefinedTerm": {
-    "cause": "{layer}{primaryId:n} has @type that specifies type {value} that is an undefined term.",
-    "locatedCause": "In {sourceName1}, element has @type{line1} that specifies type {value} that is an undefined term.",
-    "action": "Remove @type {value} or replace with an appropriate DTDL type -- see aka.ms/dtdl.",
+    "cause": "{layer}{primaryId:n} has @type that specifies type {value} that is an undefined term in DTDL v{restriction}.",
+    "locatedCause": "In {sourceName1}, element has @type{line1} that specifies type {value} that is an undefined term in DTDL v{restriction}.",
+    "action": "Remove @type {value} or replace with an appropriate DTDL v{restriction} type -- see aka.ms/dtdl.",
     "required": {
       "primaryId": "elementId",
-      "value": "cotype"
+      "value": "cotype",
+      "restriction": "version"
     },
     "optional": {
       "source1": "typeProp",

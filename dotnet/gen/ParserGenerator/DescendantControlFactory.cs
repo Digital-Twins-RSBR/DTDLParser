@@ -63,7 +63,8 @@
                         descendantControlDigest.PropertyNames,
                         descendantControlDigest.IsNarrow,
                         descendantControlDigest.ImportProperties,
-                        (int)descendantControlDigest.MaxDepth));
+                        descendantControlDigest.MaxDepth,
+                        descendantControlDigest.AllowSelf));
                 }
                 else
                 {
@@ -72,7 +73,8 @@
                         descendantControlDigest.RootClass,
                         descendantControlDigest.PropertyNames,
                         descendantControlDigest.IsNarrow,
-                        (int)descendantControlDigest.MaxDepth));
+                        descendantControlDigest.MaxDepth,
+                        descendantControlDigest.AllowSelf));
                 }
             }
 
@@ -83,7 +85,8 @@
                     descendantControlDigest.RootClass,
                     descendantControlDigest.PropertyNames,
                     descendantControlDigest.IsNarrow,
-                    (int)descendantControlDigest.MaxCount));
+                    descendantControlDigest.MaxCount,
+                    descendantControlDigest.AllowSelf));
             }
 
             return descendantControls;

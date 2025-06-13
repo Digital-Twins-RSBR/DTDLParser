@@ -1,0 +1,19 @@
+﻿{
+  "valid": true,
+  "options": [],
+  "input": [
+    {
+      "@context": "dtmi:dtdl:context;4",
+      "@id": "dtmi:example:delta_quan;1",
+      "@type": "Interface",
+      "schemas": {
+        "@id": "dtmi:example:delta_snee;1",
+        "@type": "Object",
+        "fields": {
+          "name": "delta_nuh",
+          "schema": "date"
+        }
+      }
+    }
+  ]
+}

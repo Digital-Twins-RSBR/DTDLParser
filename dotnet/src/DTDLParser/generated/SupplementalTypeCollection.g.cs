@@ -26,12 +26,19 @@ namespace DTDLParser
 
             Dtmi dtdlContextIdV2 = new Dtmi("dtmi:dtdl:context;2");
             Dtmi dtdlContextIdV3 = new Dtmi("dtmi:dtdl:context;3");
+            Dtmi dtdlContextIdV4 = new Dtmi("dtmi:dtdl:context;4");
             Dtmi dtdlExtensionAnnotationContextIdV1 = new Dtmi("dtmi:dtdl:extension:annotation;1");
+            Dtmi dtdlExtensionAnnotationContextIdV2 = new Dtmi("dtmi:dtdl:extension:annotation;2");
             Dtmi dtdlExtensionHistorizationContextIdV1 = new Dtmi("dtmi:dtdl:extension:historization;1");
-            Dtmi dtdlExtensionCausalContextIdV1 = new Dtmi("dtmi:dtdl:extension:causal;1");
             Dtmi dtdlExtensionMqttContextIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt;1");
+            Dtmi dtdlExtensionMqttContextIdV2 = new Dtmi("dtmi:dtdl:extension:mqtt;2");
+            Dtmi dtdlExtensionMqttContextIdV3 = new Dtmi("dtmi:dtdl:extension:mqtt;3");
             Dtmi dtdlExtensionOverridingContextIdV1 = new Dtmi("dtmi:dtdl:extension:overriding;1");
+            Dtmi dtdlExtensionOverridingContextIdV2 = new Dtmi("dtmi:dtdl:extension:overriding;2");
             Dtmi dtdlExtensionQuantitativeTypesContextIdV1 = new Dtmi("dtmi:dtdl:extension:quantitativeTypes;1");
+            Dtmi dtdlExtensionQuantitativeTypesContextIdV2 = new Dtmi("dtmi:dtdl:extension:quantitativeTypes;2");
+            Dtmi dtdlExtensionRequirementContextIdV1 = new Dtmi("dtmi:dtdl:extension:requirement;1");
+            Dtmi dtdlLimitsOnvifContextIdV1 = new Dtmi("dtmi:dtdl:limits:onvif;1");
             Dtmi iotcentralContextIdV2 = new Dtmi("dtmi:iotcentral:context;2");
 
             Dtmi adjunctTypeTypeIdV3 = new Dtmi("dtmi:dtdl:class:AdjunctType;3");
@@ -48,7 +55,6 @@ namespace DTDLParser
             Dtmi unitAttributeTypeIdV3 = new Dtmi("dtmi:dtdl:class:UnitAttribute;3");
             Dtmi valueAnnotationTypeIdV1 = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation");
             Dtmi historizedTypeIdV1 = new Dtmi("dtmi:dtdl:extension:historization:v1:Historized");
-            Dtmi causalTypeIdV1 = new Dtmi("dtmi:dtdl:extension:causal:v1:Causal");
             Dtmi cacheableTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Cacheable");
             Dtmi idempotentTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Idempotent");
             Dtmi indexedTypeIdV1 = new Dtmi("dtmi:dtdl:extension:mqtt:v1:Indexed");
@@ -202,712 +208,1124 @@ namespace DTDLParser
             Dtmi volumeFlowRateUnitTypeIdV2 = new Dtmi("dtmi:standard:class:VolumeFlowRateUnit;2");
             Dtmi volumeUnitTypeIdV2 = new Dtmi("dtmi:standard:class:VolumeUnit;2");
 
-            DTSupplementalTypeInfo adjunctTypeInfoV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, adjunctTypeTypeIdV3, isAbstract: true, isMergeable: false, null);
-            adjunctTypeInfoV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
-            adjunctTypeInfoV3.AllowedCotypeVersions = new HashSet<int>() { 2, 3 };
+            DTSupplementalTypeInfo adjunctTypeInfoEV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, adjunctTypeTypeIdEV3, isAbstract: true, isMergeable: false, null);
+            adjunctTypeInfoEV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
+            adjunctTypeInfoEV3.AllowedCotypeVersions = new HashSet<int>() { 2, 3 };
 
-            DTSupplementalTypeInfo aliasInfoV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, aliasTypeIdV3, isAbstract: false, isMergeable: false, null);
-            aliasInfoV3.AddProperty("dtmi:dtdl:property:aliasFor;3", new Dtmi("dtmi:dtdl:class:Entity;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            aliasInfoV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
-            aliasInfoV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            DTSupplementalTypeInfo adjunctTypeInfoEV4 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV4, adjunctTypeTypeIdEV4, isAbstract: true, isMergeable: false, null);
+            adjunctTypeInfoEV4.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Byte, DTEntityKind.Bytes, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Decimal, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Short, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute, DTEntityKind.UnsignedByte, DTEntityKind.UnsignedInteger, DTEntityKind.UnsignedLong, DTEntityKind.UnsignedShort, DTEntityKind.Uuid };
+            adjunctTypeInfoEV4.AllowedCotypeVersions = new HashSet<int>() { 2, 3, 4 };
 
-            DTSupplementalTypeInfo semanticTypeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV2, semanticTypeTypeIdV2, isAbstract: true, isMergeable: false, null);
-            semanticTypeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Telemetry };
-            semanticTypeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+            DTSupplementalTypeInfo aliasInfoEV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, aliasTypeIdEV3, isAbstract: false, isMergeable: false, null);
+            aliasInfoEV3.AddProperty("dtmi:dtdl:property:aliasFor;3", new Dtmi("dtmi:dtdl:class:Entity;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            aliasInfoEV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
+            aliasInfoEV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
 
-            DTSupplementalTypeInfo semanticTypeInfoV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, semanticTypeTypeIdV3, isAbstract: true, isMergeable: false, null);
-            semanticTypeInfoV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Telemetry };
-            semanticTypeInfoV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            DTSupplementalTypeInfo aliasInfoEV4 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV4, aliasTypeIdEV4, isAbstract: false, isMergeable: false, null);
+            aliasInfoEV4.AddProperty("dtmi:dtdl:property:aliasFor;4", new Dtmi("dtmi:dtdl:class:Entity;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            aliasInfoEV4.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Byte, DTEntityKind.Bytes, DTEntityKind.Command, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Decimal, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Short, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute, DTEntityKind.UnsignedByte, DTEntityKind.UnsignedInteger, DTEntityKind.UnsignedLong, DTEntityKind.UnsignedShort, DTEntityKind.Uuid };
+            aliasInfoEV4.AllowedCotypeVersions = new HashSet<int>() { 4 };
 
-            DTSupplementalTypeInfo semanticUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV2, semanticUnitTypeIdV2, isAbstract: true, isMergeable: false, null);
-            semanticUnitInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
-            semanticUnitInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+            DTSupplementalTypeInfo semanticTypeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV2, semanticTypeTypeIdEV2, isAbstract: true, isMergeable: false, null);
+            semanticTypeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Telemetry };
+            semanticTypeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
 
-            DTSupplementalTypeInfo semanticUnitInfoV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, semanticUnitTypeIdV3, isAbstract: true, isMergeable: false, null);
-            semanticUnitInfoV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
-            semanticUnitInfoV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            DTSupplementalTypeInfo semanticTypeInfoEV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, semanticTypeTypeIdEV3, isAbstract: true, isMergeable: false, null);
+            semanticTypeInfoEV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Telemetry };
+            semanticTypeInfoEV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
 
-            DTSupplementalTypeInfo valueAnnotationInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionAnnotationContextIdV1, valueAnnotationTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            valueAnnotationInfoV1.AddProperty("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            valueAnnotationInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            valueAnnotationInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-            valueAnnotationInfoV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Property;3"), new Dtmi("dtmi:dtdl:class:Telemetry;3") }, RequiredTypesString = "Property or Telemetry", DisallowedType = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation"), DisallowedTypeName = "ValueAnnotation" });
+            DTSupplementalTypeInfo semanticTypeInfoEV4 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV4, semanticTypeTypeIdEV4, isAbstract: true, isMergeable: false, null);
+            semanticTypeInfoEV4.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Telemetry };
+            semanticTypeInfoEV4.AllowedCotypeVersions = new HashSet<int>() { 2, 3, 4 };
+
+            DTSupplementalTypeInfo semanticUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV2, semanticUnitTypeIdEV2, isAbstract: true, isMergeable: false, null);
+            semanticUnitInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            semanticUnitInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo semanticUnitInfoEV3 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV3, semanticUnitTypeIdEV3, isAbstract: true, isMergeable: false, null);
+            semanticUnitInfoEV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            semanticUnitInfoEV3.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo semanticUnitInfoEV4 = new DTSupplementalTypeInfo(DTExtensionKind.None, dtdlContextIdV4, semanticUnitTypeIdEV4, isAbstract: true, isMergeable: false, null);
+            semanticUnitInfoEV4.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            semanticUnitInfoEV4.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo valueAnnotationInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionAnnotationContextIdV1, valueAnnotationTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            valueAnnotationInfoCV1.AddProperty("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            valueAnnotationInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            valueAnnotationInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            valueAnnotationInfoCV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Property;3"), new Dtmi("dtmi:dtdl:class:Telemetry;3") }, RequiredTypesString = "Property or Telemetry", DisallowedType = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation"), DisallowedTypeName = "ValueAnnotation" });
 
             DTSupplementalTypeInfo historizedInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionHistorizationContextIdV1, historizedTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
             historizedInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
             historizedInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
 
-            DTSupplementalTypeInfo causalInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionCausalContextIdV1, causalTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            causalInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property };
-            causalInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo cacheableInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, cacheableTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            cacheableInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Cacheable:ttl", new Uri("http://www.w3.org/2001/XMLSchema#duration"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            cacheableInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
-            cacheableInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-            cacheableInfoV1.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v1:Idempotent") };
-
-            DTSupplementalTypeInfo idempotentInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, idempotentTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            idempotentInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
-            idempotentInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo indexedInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, indexedTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            indexedInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Indexed:index", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, 1, null, regex: null, hasUniqueValue: true, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            indexedInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Telemetry };
-            indexedInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo mqttInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, mqttTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            mqttInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:commandTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            mqttInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:payloadFormat", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            mqttInfoV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:telemetryTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            mqttInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Interface };
-            mqttInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo overrideInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionOverridingContextIdV1, overrideTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            overrideInfoV1.AddProperty("dtmi:dtdl:extension:overriding:v1:Override:overrides", null, 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            overrideInfoV1.AddPropertyValueConstraint("schema", new ValueConstraint() { SiblingKeyPropertyName = "name", SiblingKeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), SiblingParentOfPropertyId = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides") });
-            overrideInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property };
-            overrideInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-            overrideInfoV1.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation") };
-            overrideInfoV1.DisallowedCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:initialization:v1:Initialized") };
-            overrideInfoV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), UniqueReference = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides"), SupplementalPropertyPath = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides") });
-            overrideInfoV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Property;3"), new Dtmi("dtmi:dtdl:class:Telemetry;3") }, RequiredTypesString = "Property or Telemetry" });
-
-            DTSupplementalTypeInfo accelerationInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, accelerationTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            accelerationInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            accelerationInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            accelerationInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo angleInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angleTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            angleInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angleInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            angleInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo angularAccelerationInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angularAccelerationTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            angularAccelerationInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngularAccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angularAccelerationInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            angularAccelerationInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo angularVelocityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angularVelocityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            angularVelocityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngularVelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angularVelocityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            angularVelocityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo apparentEnergyInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, apparentEnergyTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            apparentEnergyInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ApparentEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            apparentEnergyInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            apparentEnergyInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo apparentPowerInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, apparentPowerTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            apparentPowerInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ApparentPowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            apparentPowerInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            apparentPowerInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo areaInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, areaTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            areaInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AreaUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            areaInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            areaInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo binaryUnitInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, binaryUnitTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            binaryUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            binaryUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            binaryUnitInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
-            binaryUnitInfoV1.AllowedCotypeVersions = new HashSet<int>() { 2, 3 };
-
-            DTSupplementalTypeInfo capacitanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, capacitanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            capacitanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:CapacitanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            capacitanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            capacitanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo concentrationInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, concentrationTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            concentrationInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            concentrationInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            concentrationInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo currentInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, currentTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            currentInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:CurrentUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            currentInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            currentInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo dataRateInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, dataRateTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            dataRateInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DataRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            dataRateInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            dataRateInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo dataSizeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, dataSizeTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            dataSizeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DataSizeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            dataSizeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            dataSizeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo decimalUnitInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, decimalUnitTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            decimalUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            decimalUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            decimalUnitInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
-            decimalUnitInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo densityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, densityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            densityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            densityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            densityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo distanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, distanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            distanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            distanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            distanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo electricChargeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, electricChargeTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            electricChargeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ChargeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            electricChargeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            electricChargeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo energyInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, energyTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            energyInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:EnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            energyInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            energyInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo energyRateInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, energyRateTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            energyRateInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            energyRateInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            energyRateInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo forceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, forceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            forceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            forceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            forceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo frequencyInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, frequencyTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            frequencyInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:FrequencyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            frequencyInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            frequencyInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo humidityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, humidityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            humidityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            humidityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            humidityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo illuminanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, illuminanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            illuminanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IlluminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            illuminanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            illuminanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo inductanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, inductanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            inductanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:InductanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            inductanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            inductanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo ionizingRadiationDoseInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, ionizingRadiationDoseTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            ionizingRadiationDoseInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IonizingRadiationDoseUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            ionizingRadiationDoseInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            ionizingRadiationDoseInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo irradianceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, irradianceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            irradianceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IrradianceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            irradianceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            irradianceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo latitudeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, latitudeTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            latitudeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            latitudeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            latitudeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo lengthInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, lengthTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            lengthInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            lengthInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            lengthInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo longitudeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, longitudeTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            longitudeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            longitudeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            longitudeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo luminanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            luminanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo luminosityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminosityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            luminosityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminosityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminosityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo luminousFluxInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminousFluxTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            luminousFluxInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminousFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminousFluxInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminousFluxInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo luminousIntensityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminousIntensityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            luminousIntensityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminousIntensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminousIntensityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminousIntensityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo magneticFluxInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, magneticFluxTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            magneticFluxInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MagneticFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            magneticFluxInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            magneticFluxInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo magneticInductionInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, magneticInductionTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            magneticInductionInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MagneticInductionUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            magneticInductionInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            magneticInductionInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo massInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, massTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            massInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MassUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            massInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            massInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo massFlowRateInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, massFlowRateTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            massFlowRateInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MassFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            massFlowRateInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            massFlowRateInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo powerInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, powerTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            powerInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            powerInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            powerInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo pressureInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, pressureTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            pressureInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            pressureInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            pressureInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo quantitativeTypeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, quantitativeTypeTypeIdV1, isAbstract: true, isMergeable: false, semanticTypeTypeIdV3);
-            quantitativeTypeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            quantitativeTypeInfoV1.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;3") }, RequiredTypesString = "NumericSchema" });
-            quantitativeTypeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            quantitativeTypeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo radioactivityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, radioactivityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            radioactivityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:RadioactivityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            radioactivityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            radioactivityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo ratioUnitInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, ratioUnitTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            ratioUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:bottomUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            ratioUnitInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:topUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            ratioUnitInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
-            ratioUnitInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo reactiveEnergyInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, reactiveEnergyTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            reactiveEnergyInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ReactiveEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            reactiveEnergyInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            reactiveEnergyInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo reactivePowerInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, reactivePowerTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            reactivePowerInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ReactivePowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            reactivePowerInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            reactivePowerInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo relativeDensityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, relativeDensityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            relativeDensityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            relativeDensityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            relativeDensityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo relativeHumidityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, relativeHumidityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            relativeHumidityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            relativeHumidityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            relativeHumidityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo resistanceInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, resistanceTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            resistanceInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ResistanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            resistanceInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            resistanceInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo soundPressureInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, soundPressureTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            soundPressureInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:SoundPressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            soundPressureInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            soundPressureInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo symbolicUnitInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, symbolicUnitTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            symbolicUnitInfoV1.AddProperty("dtmi:dtdl:property:symbol;3", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            symbolicUnitInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
-            symbolicUnitInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo temperatureInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, temperatureTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            temperatureInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TemperatureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            temperatureInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            temperatureInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo thrustInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, thrustTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            thrustInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            thrustInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            thrustInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo timeSpanInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, timeSpanTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            timeSpanInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TimeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            timeSpanInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            timeSpanInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo torqueInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, torqueTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            torqueInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TorqueUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            torqueInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            torqueInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo unitPrefixInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, unitPrefixTypeIdV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdV3);
-            unitPrefixInfoV1.AddProperty("dtmi:dtdl:property:exponent;3", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            unitPrefixInfoV1.AddProperty("dtmi:dtdl:property:symbol;3", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            unitPrefixInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
-            unitPrefixInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo velocityInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, velocityTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            velocityInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            velocityInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            velocityInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo voltageInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, voltageTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            voltageInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VoltageUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            voltageInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            voltageInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo volumeInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, volumeTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            volumeInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VolumeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            volumeInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            volumeInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo volumeFlowRateInfoV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, volumeFlowRateTypeIdV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV1);
-            volumeFlowRateInfoV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VolumeFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            volumeFlowRateInfoV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
-            volumeFlowRateInfoV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
-
-            DTSupplementalTypeInfo accelerationVectorInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, accelerationVectorTypeIdV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdV2);
-            accelerationVectorInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AccelerationUnit;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            accelerationVectorInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:iotcentral:schema:vector;2") }, RequiredValuesString = "vector" });
-            accelerationVectorInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            accelerationVectorInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo eventInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, eventTypeIdV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdV2);
-            eventInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;2"), new Dtmi("dtmi:dtdl:class:String;2") }, RequiredTypesString = "NumericSchema or String" });
-            eventInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            eventInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo locationInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, locationTypeIdV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdV2);
-            locationInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:standard:schema:geospatial:point;2"), new Dtmi("dtmi:standard:schema:geospatial:multiPoint;2"), new Dtmi("dtmi:standard:schema:geospatial:lineString;2"), new Dtmi("dtmi:standard:schema:geospatial:multiLineString;2"), new Dtmi("dtmi:standard:schema:geospatial:polygon;2"), new Dtmi("dtmi:standard:schema:geospatial:multiPolygon;2"), new Dtmi("dtmi:iotcentral:schema:geopoint;2") }, RequiredValuesString = "point or multiPoint or lineString or multiLineString or polygon or multiPolygon or geopoint" });
-            locationInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            locationInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo stateInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, stateTypeIdV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdV2);
-            stateInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Enum;2") }, RequiredTypesString = "Enum" });
-            stateInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            stateInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo velocityVectorInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, velocityVectorTypeIdV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdV2);
-            velocityVectorInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VelocityUnit;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            velocityVectorInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:iotcentral:schema:vector;2") }, RequiredValuesString = "vector" });
-            velocityVectorInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            velocityVectorInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo accelerationInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, accelerationTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            accelerationInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AccelerationUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            accelerationInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            accelerationInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo accelerationUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, accelerationUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo angleInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angleTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            angleInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angleInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            angleInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo angleUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angleUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo angularAccelerationInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angularAccelerationTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            angularAccelerationInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngularAccelerationUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angularAccelerationInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            angularAccelerationInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo angularAccelerationUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angularAccelerationUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo angularVelocityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angularVelocityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            angularVelocityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngularVelocityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            angularVelocityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            angularVelocityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo angularVelocityUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angularVelocityUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo areaInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, areaTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            areaInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AreaUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            areaInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            areaInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo areaUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, areaUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo binaryPrefixInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.UnitAttribute, dtdlContextIdV2, binaryPrefixTypeIdV2, isAbstract: false, isMergeable: false, unitAttributeTypeIdV2);
-            binaryPrefixInfoV2.AddProperty("dtmi:dtdl:property:exponent;2", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            binaryPrefixInfoV2.AddProperty("dtmi:dtdl:property:symbol;2", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-
-            DTSupplementalTypeInfo binaryUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, binaryUnitTypeIdV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdV2);
-            binaryUnitInfoV2.AddProperty("dtmi:dtdl:property:baseUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            binaryUnitInfoV2.AddProperty("dtmi:dtdl:property:prefix;2", new Dtmi("dtmi:standard:class:BinaryPrefix;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            binaryUnitInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
-            binaryUnitInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo capacitanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, capacitanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            capacitanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:CapacitanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            capacitanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            capacitanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo capacitanceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, capacitanceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo chargeUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, chargeUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo currentInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, currentTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            currentInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:CurrentUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            currentInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            currentInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo currentUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, currentUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo dataRateInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, dataRateTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            dataRateInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DataRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            dataRateInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            dataRateInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo dataRateUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, dataRateUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo dataSizeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, dataSizeTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            dataSizeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DataSizeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            dataSizeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            dataSizeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo dataSizeUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, dataSizeUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo decimalPrefixInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.UnitAttribute, dtdlContextIdV2, decimalPrefixTypeIdV2, isAbstract: false, isMergeable: false, unitAttributeTypeIdV2);
-            decimalPrefixInfoV2.AddProperty("dtmi:dtdl:property:exponent;2", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            decimalPrefixInfoV2.AddProperty("dtmi:dtdl:property:symbol;2", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-
-            DTSupplementalTypeInfo decimalUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, decimalUnitTypeIdV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdV2);
-            decimalUnitInfoV2.AddProperty("dtmi:dtdl:property:baseUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            decimalUnitInfoV2.AddProperty("dtmi:dtdl:property:prefix;2", new Dtmi("dtmi:standard:class:DecimalPrefix;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            decimalUnitInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
-            decimalUnitInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo densityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, densityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            densityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            densityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            densityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo densityUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, densityUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo distanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, distanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            distanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LengthUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            distanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            distanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo electricChargeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, electricChargeTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            electricChargeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ChargeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            electricChargeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            electricChargeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo energyInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, energyTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            energyInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:EnergyUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            energyInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            energyInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo energyUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, energyUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo forceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, forceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            forceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ForceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            forceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            forceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo forceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, forceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo frequencyInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, frequencyTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            frequencyInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:FrequencyUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            frequencyInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            frequencyInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo frequencyUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, frequencyUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo humidityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, humidityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            humidityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            humidityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            humidityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo illuminanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, illuminanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            illuminanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:IlluminanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            illuminanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            illuminanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo illuminanceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, illuminanceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo inductanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, inductanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            inductanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:InductanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            inductanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            inductanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo inductanceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, inductanceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo latitudeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, latitudeTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            latitudeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            latitudeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            latitudeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo lengthInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, lengthTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            lengthInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LengthUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            lengthInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            lengthInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo lengthUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, lengthUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo longitudeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, longitudeTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            longitudeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            longitudeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            longitudeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo luminanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            luminanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo luminanceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminanceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo luminosityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminosityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            luminosityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PowerUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminosityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminosityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo luminousFluxInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminousFluxTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            luminousFluxInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminousFluxUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminousFluxInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminousFluxInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo luminousFluxUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminousFluxUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo luminousIntensityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminousIntensityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            luminousIntensityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminousIntensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            luminousIntensityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            luminousIntensityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo luminousIntensityUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminousIntensityUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo magneticFluxInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, magneticFluxTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            magneticFluxInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MagneticFluxUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            magneticFluxInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            magneticFluxInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo magneticFluxUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, magneticFluxUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo magneticInductionInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, magneticInductionTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            magneticInductionInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MagneticInductionUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            magneticInductionInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            magneticInductionInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo magneticInductionUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, magneticInductionUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo massInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, massTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            massInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MassUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            massInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            massInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo massFlowRateInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, massFlowRateTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            massFlowRateInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MassFlowRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            massFlowRateInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            massFlowRateInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo massFlowRateUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, massFlowRateUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo massUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, massUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo powerInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, powerTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            powerInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PowerUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            powerInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            powerInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo powerUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, powerUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo pressureInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, pressureTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            pressureInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PressureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            pressureInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            pressureInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo pressureUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, pressureUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo quantitativeTypeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, quantitativeTypeTypeIdV2, isAbstract: true, isMergeable: false, semanticTypeTypeIdV2);
-            quantitativeTypeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            quantitativeTypeInfoV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;2") }, RequiredTypesString = "NumericSchema" });
-            quantitativeTypeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            quantitativeTypeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo ratioUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, ratioUnitTypeIdV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdV2);
-            ratioUnitInfoV2.AddProperty("dtmi:dtdl:property:bottomUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            ratioUnitInfoV2.AddProperty("dtmi:dtdl:property:topUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            ratioUnitInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
-            ratioUnitInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo relativeHumidityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, relativeHumidityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            relativeHumidityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:Unitless;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            relativeHumidityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            relativeHumidityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo resistanceInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, resistanceTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            resistanceInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ResistanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            resistanceInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            resistanceInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo resistanceUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, resistanceUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo soundPressureInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, soundPressureTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            soundPressureInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:SoundPressureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            soundPressureInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            soundPressureInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo soundPressureUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, soundPressureUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo temperatureInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, temperatureTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            temperatureInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TemperatureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            temperatureInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            temperatureInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo temperatureUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, temperatureUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo thrustInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, thrustTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            thrustInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ForceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            thrustInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            thrustInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo timeSpanInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, timeSpanTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            timeSpanInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TimeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            timeSpanInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            timeSpanInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo timeUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, timeUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo torqueInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, torqueTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            torqueInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TorqueUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            torqueInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            torqueInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo torqueUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, torqueUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo unitlessInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, unitlessTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo velocityInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, velocityTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            velocityInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VelocityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            velocityInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            velocityInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo velocityUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, velocityUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo voltageInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, voltageTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            voltageInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VoltageUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            voltageInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            voltageInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo voltageUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, voltageUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo volumeInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, volumeTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            volumeInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VolumeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            volumeInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            volumeInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo volumeFlowRateInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, volumeFlowRateTypeIdV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdV2);
-            volumeFlowRateInfoV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VolumeFlowRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
-            volumeFlowRateInfoV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
-            volumeFlowRateInfoV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
-
-            DTSupplementalTypeInfo volumeFlowRateUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, volumeFlowRateUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
-
-            DTSupplementalTypeInfo volumeUnitInfoV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, volumeUnitTypeIdV2, isAbstract: false, isMergeable: false, unitTypeIdV2);
+            DTSupplementalTypeInfo historizedInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionHistorizationContextIdV2, historizedTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            historizedInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            historizedInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo cacheableInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, cacheableTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            cacheableInfoCV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Cacheable:ttl", new Uri("http://www.w3.org/2001/XMLSchema#duration"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            cacheableInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            cacheableInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            cacheableInfoCV1.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v1:Idempotent") };
+
+            DTSupplementalTypeInfo idempotentInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, idempotentTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            idempotentInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            idempotentInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo indexedInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, indexedTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            indexedInfoCV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Indexed:index", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, 1, null, regex: null, hasUniqueValue: true, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            indexedInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Telemetry };
+            indexedInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo mqttInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV1, mqttTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            mqttInfoCV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:commandTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:payloadFormat", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV1.AddProperty("dtmi:dtdl:extension:mqtt:v1:Mqtt:telemetryTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Interface };
+            mqttInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo cacheableInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV2, cacheableTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            cacheableInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Cacheable:ttl", new Uri("http://www.w3.org/2001/XMLSchema#duration"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            cacheableInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            cacheableInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+            cacheableInfoCV2.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v2:Idempotent") };
+
+            DTSupplementalTypeInfo idempotentInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV2, idempotentTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            idempotentInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            idempotentInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo indexedInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV2, indexedTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            indexedInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Indexed:index", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, 1, null, regex: null, hasUniqueValue: true, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            indexedInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Telemetry };
+            indexedInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo mqttInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV2, mqttTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            mqttInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Mqtt:cmdServiceGroupId", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^[!$-*,-.0-z|~]+$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Mqtt:commandTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Mqtt:payloadFormat", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Mqtt:telemetryTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV2.AddProperty("dtmi:dtdl:extension:mqtt:v2:Mqtt:telemServiceGroupId", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^[!$-*,-.0-z|~]+$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Interface };
+            mqttInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo transparentInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV2, transparentTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            transparentInfoCV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Object;3"), new Dtmi("dtmi:dtdl:class:Object;4") }, RequiredTypesString = "Object" });
+            transparentInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse };
+            transparentInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo cacheableInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, cacheableTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            cacheableInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Cacheable:ttl", new Uri("http://www.w3.org/2001/XMLSchema#duration"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            cacheableInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            cacheableInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+            cacheableInfoCV3.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v3:Idempotent") };
+
+            DTSupplementalTypeInfo errorInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, errorTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            errorInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Object };
+            errorInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo errorMessageInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, errorMessageTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            errorMessageInfoCV3.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:String;2"), new Dtmi("dtmi:dtdl:class:String;3"), new Dtmi("dtmi:dtdl:class:String;4") }, RequiredTypesString = "String" });
+            errorMessageInfoCV3.AddParentConstraint("fields", new Dtmi("dtmi:dtdl:extension:mqtt:v3:Error"), "Error", adjunctTypeIsUnique: true);
+            errorMessageInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Field };
+            errorMessageInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo errorResultInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, errorResultTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            errorResultInfoCV3.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v3:Error") }, RequiredTypesString = "Error" });
+            errorResultInfoCV3.AddParentConstraint("fields", new Dtmi("dtmi:dtdl:extension:mqtt:v3:Result"), "Result", adjunctTypeIsUnique: true);
+            errorResultInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Field };
+            errorResultInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+            errorResultInfoCV3.DisallowedCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:requirement:v1:Required") };
+
+            DTSupplementalTypeInfo idempotentInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, idempotentTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            idempotentInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Command };
+            idempotentInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo indexedInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, indexedTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            indexedInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Indexed:index", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, 1, null, regex: null, hasUniqueValue: true, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            indexedInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Telemetry };
+            indexedInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo mqttInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, mqttTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            mqttInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Mqtt:cmdServiceGroupId", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^[!$-*,-.0-z|~]+$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Mqtt:commandTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Mqtt:payloadFormat", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Mqtt:telemetryTopic", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^(?:(?:[!%-*,-.0-z|~][!$-*,-.0-z|~]*)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+}))(?:\/(?:(?:[!$-*,-.0-z|~]+)|(?:{(?:[A-Za-z]+:)?[A-Za-z]+})))*$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV3.AddProperty("dtmi:dtdl:extension:mqtt:v3:Mqtt:telemServiceGroupId", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, null, null, null, null, regex: new Regex(@"^[!$-*,-.0-z|~]+$"), hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            mqttInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Interface };
+            mqttInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo normalResultInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, normalResultTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            normalResultInfoCV3.AddParentConstraint("fields", new Dtmi("dtmi:dtdl:extension:mqtt:v3:Result"), "Result", adjunctTypeIsUnique: true);
+            normalResultInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Field };
+            normalResultInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+            normalResultInfoCV3.DisallowedCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:requirement:v1:Required") };
+
+            DTSupplementalTypeInfo resultInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, resultTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            resultInfoCV3.AddPropertyValueConstraint("fields", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:extension:mqtt:v3:NormalResult"), new Dtmi("dtmi:dtdl:extension:mqtt:v3:ErrorResult") }, RequiredTypesString = "NormalResult or ErrorResult" });
+            resultInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Object };
+            resultInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo transparentInfoCV3 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionMqttContextIdV3, transparentTypeIdCV3, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            transparentInfoCV3.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Object;3"), new Dtmi("dtmi:dtdl:class:Object;4") }, RequiredTypesString = "Object" });
+            transparentInfoCV3.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse };
+            transparentInfoCV3.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo overrideInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionOverridingContextIdV1, overrideTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            overrideInfoCV1.AddProperty("dtmi:dtdl:extension:overriding:v1:Override:overrides", null, 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            overrideInfoCV1.AddPropertyValueConstraint("schema", new ValueConstraint() { SiblingKeyPropertyName = "name", SiblingKeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), SiblingParentOfPropertyId = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides") });
+            overrideInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property };
+            overrideInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+            overrideInfoCV1.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation") };
+            overrideInfoCV1.DisallowedCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:initialization:v1:Initialized") };
+            overrideInfoCV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), UniqueReference = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides"), SupplementalPropertyPath = new Dtmi("dtmi:dtdl:extension:overriding:v1:Override:overrides") });
+            overrideInfoCV1.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v1:ValueAnnotation:annotates"), RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Property;3"), new Dtmi("dtmi:dtdl:class:Telemetry;3") }, RequiredTypesString = "Property or Telemetry" });
+
+            DTSupplementalTypeInfo overrideInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionOverridingContextIdV2, overrideTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            overrideInfoCV2.AddProperty("dtmi:dtdl:extension:overriding:v2:Override:overrides", null, 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            overrideInfoCV2.AddPropertyValueConstraint("schema", new ValueConstraint() { SiblingKeyPropertyName = "name", SiblingKeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v2:ValueAnnotation:annotates"), SiblingParentOfPropertyId = new Dtmi("dtmi:dtdl:extension:overriding:v2:Override:overrides") });
+            overrideInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property };
+            overrideInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+            overrideInfoCV2.RequiredCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:annotation:v2:ValueAnnotation") };
+            overrideInfoCV2.DisallowedCocotypes = new HashSet<Dtmi>() { new Dtmi("dtmi:dtdl:extension:initialization:v2:Initialized") };
+            overrideInfoCV2.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v2:ValueAnnotation:annotates"), UniqueReference = new Dtmi("dtmi:dtdl:extension:overriding:v2:Override:overrides"), SupplementalPropertyPath = new Dtmi("dtmi:dtdl:extension:overriding:v2:Override:overrides") });
+            overrideInfoCV2.AddSiblingConstraint(new SiblingConstraint() { KeyPropertyName = "name", KeyrefPropertyId = new Dtmi("dtmi:dtdl:extension:annotation:v2:ValueAnnotation:annotates"), RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Property;3"), new Dtmi("dtmi:dtdl:class:Property;4"), new Dtmi("dtmi:dtdl:class:Telemetry;3"), new Dtmi("dtmi:dtdl:class:Telemetry;4") }, RequiredTypesString = "Property or Telemetry" });
+
+            DTSupplementalTypeInfo accelerationInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, accelerationTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            accelerationInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            accelerationInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            accelerationInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo angleInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angleTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            angleInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angleInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angleInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo angularAccelerationInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angularAccelerationTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            angularAccelerationInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngularAccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularAccelerationInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularAccelerationInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo angularVelocityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, angularVelocityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            angularVelocityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngularVelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularVelocityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularVelocityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo apparentEnergyInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, apparentEnergyTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            apparentEnergyInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ApparentEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            apparentEnergyInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            apparentEnergyInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo apparentPowerInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, apparentPowerTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            apparentPowerInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ApparentPowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            apparentPowerInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            apparentPowerInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo areaInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, areaTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            areaInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AreaUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            areaInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            areaInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo binaryUnitInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, binaryUnitTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            binaryUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute };
+            binaryUnitInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 2, 3 };
+
+            DTSupplementalTypeInfo capacitanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, capacitanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            capacitanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:CapacitanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            capacitanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            capacitanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo concentrationInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, concentrationTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            concentrationInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            concentrationInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            concentrationInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo currentInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, currentTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            currentInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:CurrentUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            currentInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            currentInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo dataRateInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, dataRateTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            dataRateInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DataRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataRateInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataRateInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo dataSizeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, dataSizeTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            dataSizeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DataSizeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataSizeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataSizeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo decimalUnitInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, decimalUnitTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            decimalUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            decimalUnitInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo densityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, densityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            densityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            densityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            densityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo distanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, distanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            distanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            distanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            distanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo electricChargeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, electricChargeTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            electricChargeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ChargeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            electricChargeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            electricChargeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo energyInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, energyTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            energyInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:EnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            energyInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            energyInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo energyRateInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, energyRateTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            energyRateInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            energyRateInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            energyRateInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo forceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, forceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            forceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            forceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            forceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo frequencyInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, frequencyTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            frequencyInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:FrequencyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            frequencyInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            frequencyInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo humidityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, humidityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            humidityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            humidityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            humidityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo illuminanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, illuminanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            illuminanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IlluminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            illuminanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            illuminanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo inductanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, inductanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            inductanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:InductanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            inductanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            inductanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo ionizingRadiationDoseInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, ionizingRadiationDoseTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            ionizingRadiationDoseInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IonizingRadiationDoseUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ionizingRadiationDoseInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            ionizingRadiationDoseInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo irradianceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, irradianceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            irradianceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:IrradianceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            irradianceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            irradianceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo latitudeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, latitudeTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            latitudeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            latitudeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            latitudeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo lengthInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, lengthTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            lengthInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            lengthInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            lengthInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo longitudeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, longitudeTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            longitudeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            longitudeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            longitudeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo luminanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            luminanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo luminosityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminosityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            luminosityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminosityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminosityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo luminousFluxInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminousFluxTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            luminousFluxInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminousFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousFluxInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousFluxInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo luminousIntensityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, luminousIntensityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            luminousIntensityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:LuminousIntensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousIntensityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousIntensityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo magneticFluxInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, magneticFluxTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            magneticFluxInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MagneticFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticFluxInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticFluxInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo magneticInductionInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, magneticInductionTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            magneticInductionInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MagneticInductionUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticInductionInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticInductionInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo massInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, massTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            massInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MassUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            massInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo massFlowRateInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, massFlowRateTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            massFlowRateInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:MassFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massFlowRateInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            massFlowRateInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo powerInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, powerTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            powerInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            powerInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            powerInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo pressureInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, pressureTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            pressureInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:PressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            pressureInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            pressureInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo quantitativeTypeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, quantitativeTypeTypeIdCV1, isAbstract: true, isMergeable: false, semanticTypeTypeIdEV3);
+            quantitativeTypeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            quantitativeTypeInfoCV1.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;3") }, RequiredTypesString = "NumericSchema" });
+            quantitativeTypeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            quantitativeTypeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo radioactivityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, radioactivityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            radioactivityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:RadioactivityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            radioactivityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            radioactivityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo ratioUnitInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, ratioUnitTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            ratioUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:bottomUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:topUnit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            ratioUnitInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo reactiveEnergyInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, reactiveEnergyTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            reactiveEnergyInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ReactiveEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            reactiveEnergyInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            reactiveEnergyInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo reactivePowerInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, reactivePowerTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            reactivePowerInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ReactivePowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            reactivePowerInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            reactivePowerInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo relativeDensityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, relativeDensityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            relativeDensityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            relativeDensityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            relativeDensityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo relativeHumidityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, relativeHumidityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            relativeHumidityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            relativeHumidityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            relativeHumidityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo resistanceInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, resistanceTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            resistanceInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ResistanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            resistanceInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            resistanceInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo soundPressureInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, soundPressureTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            soundPressureInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:SoundPressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            soundPressureInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            soundPressureInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo symbolicUnitInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, symbolicUnitTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            symbolicUnitInfoCV1.AddProperty("dtmi:dtdl:property:symbol;3", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            symbolicUnitInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            symbolicUnitInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo temperatureInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, temperatureTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            temperatureInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TemperatureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            temperatureInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            temperatureInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo thrustInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, thrustTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            thrustInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            thrustInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            thrustInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo timeSpanInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, timeSpanTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            timeSpanInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TimeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            timeSpanInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            timeSpanInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo torqueInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, torqueTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            torqueInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:TorqueUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            torqueInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            torqueInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo unitPrefixInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV1, unitPrefixTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV3);
+            unitPrefixInfoCV1.AddProperty("dtmi:dtdl:property:exponent;3", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            unitPrefixInfoCV1.AddProperty("dtmi:dtdl:property:symbol;3", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            unitPrefixInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            unitPrefixInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo velocityInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, velocityTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            velocityInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            velocityInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            velocityInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo voltageInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, voltageTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            voltageInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VoltageUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            voltageInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            voltageInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo volumeInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, volumeTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            volumeInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VolumeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo volumeFlowRateInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV1, volumeFlowRateTypeIdCV1, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV1);
+            volumeFlowRateInfoCV1.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v1:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;3"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v1:enum:VolumeFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeFlowRateInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeFlowRateInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3 };
+
+            DTSupplementalTypeInfo accelerationInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, accelerationTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            accelerationInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            accelerationInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            accelerationInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo angleInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, angleTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            angleInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angleInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angleInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo angularAccelerationInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, angularAccelerationTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            angularAccelerationInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AngularAccelerationUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularAccelerationInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularAccelerationInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo angularVelocityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, angularVelocityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            angularVelocityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AngularVelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularVelocityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularVelocityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo apparentEnergyInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, apparentEnergyTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            apparentEnergyInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ApparentEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            apparentEnergyInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            apparentEnergyInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo apparentPowerInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, apparentPowerTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            apparentPowerInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ApparentPowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            apparentPowerInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            apparentPowerInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo areaInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, areaTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            areaInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AreaUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            areaInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            areaInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo binaryUnitInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV2, binaryUnitTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            binaryUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Array, DTEntityKind.Boolean, DTEntityKind.Byte, DTEntityKind.Bytes, DTEntityKind.Command, DTEntityKind.CommandPayload, DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.CommandType, DTEntityKind.Component, DTEntityKind.Date, DTEntityKind.DateTime, DTEntityKind.Decimal, DTEntityKind.Double, DTEntityKind.Duration, DTEntityKind.Enum, DTEntityKind.EnumValue, DTEntityKind.Field, DTEntityKind.Float, DTEntityKind.Integer, DTEntityKind.Interface, DTEntityKind.LatentType, DTEntityKind.Long, DTEntityKind.Map, DTEntityKind.MapKey, DTEntityKind.MapValue, DTEntityKind.NamedLatentType, DTEntityKind.Object, DTEntityKind.Property, DTEntityKind.Relationship, DTEntityKind.Short, DTEntityKind.String, DTEntityKind.Telemetry, DTEntityKind.Time, DTEntityKind.Unit, DTEntityKind.UnitAttribute, DTEntityKind.UnsignedByte, DTEntityKind.UnsignedInteger, DTEntityKind.UnsignedLong, DTEntityKind.UnsignedShort, DTEntityKind.Uuid };
+            binaryUnitInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 2, 3, 4 };
+
+            DTSupplementalTypeInfo capacitanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, capacitanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            capacitanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:CapacitanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            capacitanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            capacitanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo concentrationInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, concentrationTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            concentrationInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            concentrationInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            concentrationInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo currentInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, currentTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            currentInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:CurrentUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            currentInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            currentInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo dataRateInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, dataRateTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            dataRateInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:DataRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataRateInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataRateInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo dataSizeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, dataSizeTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            dataSizeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:DataSizeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataSizeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataSizeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo decimalUnitInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV2, decimalUnitTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            decimalUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:baseUnit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:prefix", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            decimalUnitInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo densityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, densityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            densityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            densityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            densityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo distanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, distanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            distanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            distanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            distanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo electricChargeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, electricChargeTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            electricChargeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ChargeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            electricChargeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            electricChargeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo energyInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, energyTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            energyInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:EnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            energyInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            energyInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo energyRateInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, energyRateTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            energyRateInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            energyRateInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            energyRateInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo forceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, forceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            forceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            forceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            forceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo frequencyInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, frequencyTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            frequencyInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:FrequencyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            frequencyInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            frequencyInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo humidityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, humidityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            humidityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:DensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            humidityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            humidityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo illuminanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, illuminanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            illuminanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:IlluminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            illuminanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            illuminanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo inductanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, inductanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            inductanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:InductanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            inductanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            inductanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo ionizingRadiationDoseInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, ionizingRadiationDoseTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            ionizingRadiationDoseInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:IonizingRadiationDoseUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ionizingRadiationDoseInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            ionizingRadiationDoseInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo irradianceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, irradianceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            irradianceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:IrradianceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            irradianceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            irradianceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo latitudeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, latitudeTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            latitudeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            latitudeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            latitudeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo lengthInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, lengthTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            lengthInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:LengthUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            lengthInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            lengthInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo longitudeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, longitudeTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            longitudeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:AngleUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            longitudeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            longitudeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo luminanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, luminanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            luminanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:LuminanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo luminosityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, luminosityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            luminosityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminosityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminosityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo luminousFluxInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, luminousFluxTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            luminousFluxInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:LuminousFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousFluxInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousFluxInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo luminousIntensityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, luminousIntensityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            luminousIntensityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:LuminousIntensityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousIntensityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousIntensityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo magneticFluxInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, magneticFluxTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            magneticFluxInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:MagneticFluxUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticFluxInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticFluxInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo magneticInductionInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, magneticInductionTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            magneticInductionInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:MagneticInductionUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticInductionInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticInductionInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo massInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, massTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            massInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:MassUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            massInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo massFlowRateInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, massFlowRateTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            massFlowRateInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:MassFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massFlowRateInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            massFlowRateInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo powerInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, powerTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            powerInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:PowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            powerInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            powerInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo pressureInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, pressureTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            pressureInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:PressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            pressureInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            pressureInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo quantitativeTypeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, quantitativeTypeTypeIdCV2, isAbstract: true, isMergeable: false, semanticTypeTypeIdEV4);
+            quantitativeTypeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            quantitativeTypeInfoCV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;4") }, RequiredTypesString = "NumericSchema" });
+            quantitativeTypeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            quantitativeTypeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo radioactivityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, radioactivityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            radioactivityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:RadioactivityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            radioactivityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            radioactivityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo ratioUnitInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV2, ratioUnitTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            ratioUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:bottomUnit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:topUnit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            ratioUnitInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo reactiveEnergyInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, reactiveEnergyTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            reactiveEnergyInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ReactiveEnergyUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            reactiveEnergyInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            reactiveEnergyInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo reactivePowerInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, reactivePowerTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            reactivePowerInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ReactivePowerUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            reactivePowerInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            reactivePowerInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo relativeDensityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, relativeDensityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            relativeDensityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            relativeDensityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            relativeDensityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo relativeHumidityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, relativeHumidityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            relativeHumidityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:Unitless"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            relativeHumidityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            relativeHumidityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo resistanceInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, resistanceTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            resistanceInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ResistanceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            resistanceInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            resistanceInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo soundPressureInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, soundPressureTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            soundPressureInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:SoundPressureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            soundPressureInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            soundPressureInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo symbolicUnitInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV2, symbolicUnitTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            symbolicUnitInfoCV2.AddProperty("dtmi:dtdl:property:symbol;4", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            symbolicUnitInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            symbolicUnitInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo temperatureInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, temperatureTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            temperatureInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:TemperatureUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            temperatureInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            temperatureInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo thrustInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, thrustTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            thrustInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:ForceUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            thrustInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            thrustInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo timeSpanInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, timeSpanTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            timeSpanInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:TimeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            timeSpanInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            timeSpanInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo torqueInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, torqueTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            torqueInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:TorqueUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            torqueInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            torqueInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo unitPrefixInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionQuantitativeTypesContextIdV2, unitPrefixTypeIdCV2, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            unitPrefixInfoCV2.AddProperty("dtmi:dtdl:property:exponent;4", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            unitPrefixInfoCV2.AddProperty("dtmi:dtdl:property:symbol;4", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            unitPrefixInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.EnumValue };
+            unitPrefixInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo velocityInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, velocityTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            velocityInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:VelocityUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            velocityInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            velocityInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo voltageInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, voltageTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            voltageInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:VoltageUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            voltageInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            voltageInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo volumeInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, volumeTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            volumeInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:VolumeUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo volumeFlowRateInfoCV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlExtensionQuantitativeTypesContextIdV2, volumeFlowRateTypeIdCV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdCV2);
+            volumeFlowRateInfoCV2.AddProperty("dtmi:dtdl:extension:quantitativeTypes:v2:property:unit", new Dtmi("dtmi:dtdl:class:EnumValue;4"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: new Dtmi("dtmi:dtdl:extension:quantitativeTypes:v2:enum:VolumeFlowRateUnit"), instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeFlowRateInfoCV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.CommandRequest, DTEntityKind.CommandResponse, DTEntityKind.Field, DTEntityKind.MapValue, DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeFlowRateInfoCV2.AllowedCotypeVersions = new HashSet<int>() { 4 };
+
+            DTSupplementalTypeInfo requiredInfoCV1 = new DTSupplementalTypeInfo(DTExtensionKind.AdjunctType, dtdlExtensionRequirementContextIdV1, requiredTypeIdCV1, isAbstract: false, isMergeable: false, adjunctTypeTypeIdEV4);
+            requiredInfoCV1.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Field };
+            requiredInfoCV1.AllowedCotypeVersions = new HashSet<int>() { 3, 4 };
+
+            DTSupplementalTypeInfo accelerationVectorInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, accelerationVectorTypeIdEV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdEV2);
+            accelerationVectorInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AccelerationUnit;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            accelerationVectorInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:iotcentral:schema:vector;2") }, RequiredValuesString = "vector" });
+            accelerationVectorInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            accelerationVectorInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo eventInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, eventTypeIdEV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdEV2);
+            eventInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;2"), new Dtmi("dtmi:dtdl:class:String;2") }, RequiredTypesString = "NumericSchema or String" });
+            eventInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            eventInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo locationInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, locationTypeIdEV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdEV2);
+            locationInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:standard:schema:geospatial:point;2"), new Dtmi("dtmi:standard:schema:geospatial:multiPoint;2"), new Dtmi("dtmi:standard:schema:geospatial:lineString;2"), new Dtmi("dtmi:standard:schema:geospatial:multiLineString;2"), new Dtmi("dtmi:standard:schema:geospatial:polygon;2"), new Dtmi("dtmi:standard:schema:geospatial:multiPolygon;2"), new Dtmi("dtmi:iotcentral:schema:geopoint;2") }, RequiredValuesString = "point or multiPoint or lineString or multiLineString or polygon or multiPolygon or geopoint" });
+            locationInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            locationInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo stateInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, stateTypeIdEV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdEV2);
+            stateInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:Enum;2") }, RequiredTypesString = "Enum" });
+            stateInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            stateInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo velocityVectorInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, iotcentralContextIdV2, velocityVectorTypeIdEV2, isAbstract: false, isMergeable: false, semanticTypeTypeIdEV2);
+            velocityVectorInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VelocityUnit;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            velocityVectorInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredValues = new List<Dtmi>() { new Dtmi("dtmi:iotcentral:schema:vector;2") }, RequiredValuesString = "vector" });
+            velocityVectorInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            velocityVectorInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo accelerationInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, accelerationTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            accelerationInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AccelerationUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            accelerationInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            accelerationInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo accelerationUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, accelerationUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo angleInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angleTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            angleInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angleInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            angleInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo angleUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angleUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo angularAccelerationInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angularAccelerationTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            angularAccelerationInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngularAccelerationUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularAccelerationInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularAccelerationInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo angularAccelerationUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angularAccelerationUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo angularVelocityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, angularVelocityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            angularVelocityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngularVelocityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            angularVelocityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            angularVelocityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo angularVelocityUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, angularVelocityUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo areaInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, areaTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            areaInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AreaUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            areaInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            areaInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo areaUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, areaUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo binaryPrefixInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.UnitAttribute, dtdlContextIdV2, binaryPrefixTypeIdEV2, isAbstract: false, isMergeable: false, unitAttributeTypeIdEV2);
+            binaryPrefixInfoEV2.AddProperty("dtmi:dtdl:property:exponent;2", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryPrefixInfoEV2.AddProperty("dtmi:dtdl:property:symbol;2", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+
+            DTSupplementalTypeInfo binaryUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, binaryUnitTypeIdEV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdEV2);
+            binaryUnitInfoEV2.AddProperty("dtmi:dtdl:property:baseUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoEV2.AddProperty("dtmi:dtdl:property:prefix;2", new Dtmi("dtmi:standard:class:BinaryPrefix;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            binaryUnitInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            binaryUnitInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo capacitanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, capacitanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            capacitanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:CapacitanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            capacitanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            capacitanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo capacitanceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, capacitanceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo chargeUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, chargeUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo currentInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, currentTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            currentInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:CurrentUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            currentInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            currentInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo currentUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, currentUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo dataRateInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, dataRateTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            dataRateInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DataRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataRateInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataRateInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo dataRateUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, dataRateUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo dataSizeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, dataSizeTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            dataSizeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DataSizeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            dataSizeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            dataSizeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo dataSizeUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, dataSizeUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo decimalPrefixInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.UnitAttribute, dtdlContextIdV2, decimalPrefixTypeIdEV2, isAbstract: false, isMergeable: false, unitAttributeTypeIdEV2);
+            decimalPrefixInfoEV2.AddProperty("dtmi:dtdl:property:exponent;2", new Uri("http://www.w3.org/2001/XMLSchema#integer"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalPrefixInfoEV2.AddProperty("dtmi:dtdl:property:symbol;2", new Uri("http://www.w3.org/2001/XMLSchema#string"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+
+            DTSupplementalTypeInfo decimalUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, decimalUnitTypeIdEV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdEV2);
+            decimalUnitInfoEV2.AddProperty("dtmi:dtdl:property:baseUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoEV2.AddProperty("dtmi:dtdl:property:prefix;2", new Dtmi("dtmi:standard:class:DecimalPrefix;2"), 1, null, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: true, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            decimalUnitInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            decimalUnitInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo densityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, densityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            densityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            densityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            densityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo densityUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, densityUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo distanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, distanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            distanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LengthUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            distanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            distanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo electricChargeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, electricChargeTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            electricChargeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ChargeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            electricChargeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            electricChargeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo energyInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, energyTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            energyInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:EnergyUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            energyInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            energyInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo energyUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, energyUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo forceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, forceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            forceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ForceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            forceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            forceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo forceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, forceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo frequencyInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, frequencyTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            frequencyInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:FrequencyUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            frequencyInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            frequencyInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo frequencyUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, frequencyUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo humidityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, humidityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            humidityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:DensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            humidityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            humidityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo illuminanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, illuminanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            illuminanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:IlluminanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            illuminanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            illuminanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo illuminanceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, illuminanceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo inductanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, inductanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            inductanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:InductanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            inductanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            inductanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo inductanceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, inductanceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo latitudeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, latitudeTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            latitudeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            latitudeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            latitudeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo lengthInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, lengthTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            lengthInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LengthUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            lengthInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            lengthInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo lengthUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, lengthUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo longitudeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, longitudeTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            longitudeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:AngleUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            longitudeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            longitudeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo luminanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            luminanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo luminanceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminanceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo luminosityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminosityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            luminosityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PowerUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminosityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminosityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo luminousFluxInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminousFluxTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            luminousFluxInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminousFluxUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousFluxInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousFluxInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo luminousFluxUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminousFluxUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo luminousIntensityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, luminousIntensityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            luminousIntensityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:LuminousIntensityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            luminousIntensityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            luminousIntensityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo luminousIntensityUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, luminousIntensityUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo magneticFluxInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, magneticFluxTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            magneticFluxInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MagneticFluxUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticFluxInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticFluxInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo magneticFluxUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, magneticFluxUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo magneticInductionInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, magneticInductionTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            magneticInductionInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MagneticInductionUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            magneticInductionInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            magneticInductionInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo magneticInductionUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, magneticInductionUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo massInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, massTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            massInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MassUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            massInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo massFlowRateInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, massFlowRateTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            massFlowRateInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:MassFlowRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            massFlowRateInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            massFlowRateInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo massFlowRateUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, massFlowRateUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo massUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, massUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo powerInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, powerTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            powerInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PowerUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            powerInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            powerInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo powerUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, powerUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo pressureInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, pressureTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            pressureInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:PressureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            pressureInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            pressureInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo pressureUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, pressureUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo quantitativeTypeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, quantitativeTypeTypeIdEV2, isAbstract: true, isMergeable: false, semanticTypeTypeIdEV2);
+            quantitativeTypeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            quantitativeTypeInfoEV2.AddPropertyValueConstraint("schema", new ValueConstraint() { RequiredTypes = new List<Dtmi>() { new Dtmi("dtmi:dtdl:class:NumericSchema;2") }, RequiredTypesString = "NumericSchema" });
+            quantitativeTypeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            quantitativeTypeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo ratioUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticUnit, dtdlContextIdV2, ratioUnitTypeIdEV2, isAbstract: false, isMergeable: false, semanticUnitTypeIdEV2);
+            ratioUnitInfoEV2.AddProperty("dtmi:dtdl:property:bottomUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoEV2.AddProperty("dtmi:dtdl:property:topUnit;2", new Dtmi("dtmi:dtdl:class:Unit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            ratioUnitInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Unit };
+            ratioUnitInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo relativeHumidityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, relativeHumidityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            relativeHumidityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:Unitless;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            relativeHumidityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            relativeHumidityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo resistanceInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, resistanceTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            resistanceInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ResistanceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            resistanceInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            resistanceInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo resistanceUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, resistanceUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo soundPressureInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, soundPressureTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            soundPressureInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:SoundPressureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            soundPressureInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            soundPressureInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo soundPressureUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, soundPressureUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo temperatureInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, temperatureTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            temperatureInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TemperatureUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            temperatureInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            temperatureInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo temperatureUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, temperatureUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo thrustInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, thrustTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            thrustInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:ForceUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            thrustInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            thrustInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo timeSpanInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, timeSpanTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            timeSpanInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TimeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            timeSpanInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            timeSpanInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo timeUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, timeUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo torqueInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, torqueTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            torqueInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:TorqueUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            torqueInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            torqueInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo torqueUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, torqueUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo unitlessInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, unitlessTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo velocityInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, velocityTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            velocityInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VelocityUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            velocityInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            velocityInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo velocityUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, velocityUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo voltageInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, voltageTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            voltageInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VoltageUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            voltageInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            voltageInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo voltageUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, voltageUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo volumeInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, volumeTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            volumeInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VolumeUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo volumeFlowRateInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.SemanticType, dtdlContextIdV2, volumeFlowRateTypeIdEV2, isAbstract: false, isMergeable: false, quantitativeTypeTypeIdEV2);
+            volumeFlowRateInfoEV2.AddProperty("dtmi:dtdl:property:unit;2", new Dtmi("dtmi:standard:class:VolumeFlowRateUnit;2"), 1, 1, null, null, null, regex: null, hasUniqueValue: false, isPlural: false, isOptional: false, defaultLanguage: null, dtmiSeg: null, dictionaryKey: null, idRequired: false, typeRequired: true, childOf: null, instanceProperty: null, requiredValues: null, requiredValuesString: null, requiredLiteral: null);
+            volumeFlowRateInfoEV2.AllowedCotypeKinds = new HashSet<DTEntityKind>() { DTEntityKind.Property, DTEntityKind.Telemetry };
+            volumeFlowRateInfoEV2.AllowedCotypeVersions = new HashSet<int>() { 2 };
+
+            DTSupplementalTypeInfo volumeFlowRateUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, volumeFlowRateUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
+
+            DTSupplementalTypeInfo volumeUnitInfoEV2 = new DTSupplementalTypeInfo(DTExtensionKind.Unit, dtdlContextIdV2, volumeUnitTypeIdEV2, isAbstract: false, isMergeable: false, unitTypeIdEV2);
 
             EndogenousSupplementalTypes[adjunctTypeTypeIdV3] = adjunctTypeInfoV3;
             EndogenousSupplementalTypes[aliasTypeIdV3] = aliasInfoV3;
@@ -917,7 +1335,6 @@ namespace DTDLParser
             EndogenousSupplementalTypes[semanticUnitTypeIdV3] = semanticUnitInfoV3;
             EndogenousSupplementalTypes[valueAnnotationTypeIdV1] = valueAnnotationInfoV1;
             EndogenousSupplementalTypes[historizedTypeIdV1] = historizedInfoV1;
-            EndogenousSupplementalTypes[causalTypeIdV1] = causalInfoV1;
             EndogenousSupplementalTypes[cacheableTypeIdV1] = cacheableInfoV1;
             EndogenousSupplementalTypes[idempotentTypeIdV1] = idempotentInfoV1;
             EndogenousSupplementalTypes[indexedTypeIdV1] = indexedInfoV1;

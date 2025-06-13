@@ -26,6 +26,12 @@ namespace DTDLParser
         /// <summary>The kind of the Entity is Boolean.</summary>
         Boolean,
 
+        /// <summary>The kind of the Entity is Byte.</summary>
+        Byte,
+
+        /// <summary>The kind of the Entity is Bytes.</summary>
+        Bytes,
+
         /// <summary>The kind of the Entity is Command.</summary>
         Command,
 
@@ -49,6 +55,9 @@ namespace DTDLParser
 
         /// <summary>The kind of the Entity is DateTime.</summary>
         DateTime,
+
+        /// <summary>The kind of the Entity is Decimal.</summary>
+        Decimal,
 
         /// <summary>The kind of the Entity is Double.</summary>
         Double,
@@ -104,6 +113,9 @@ namespace DTDLParser
         /// <summary>The kind of the Entity is Relationship.</summary>
         Relationship,
 
+        /// <summary>The kind of the Entity is Short.</summary>
+        Short,
+
         /// <summary>The kind of the Entity is String.</summary>
         String,
 
@@ -118,5 +130,20 @@ namespace DTDLParser
 
         /// <summary>The kind of the Entity is UnitAttribute.</summary>
         UnitAttribute,
+
+        /// <summary>The kind of the Entity is UnsignedByte.</summary>
+        UnsignedByte,
+
+        /// <summary>The kind of the Entity is UnsignedInteger.</summary>
+        UnsignedInteger,
+
+        /// <summary>The kind of the Entity is UnsignedLong.</summary>
+        UnsignedLong,
+
+        /// <summary>The kind of the Entity is UnsignedShort.</summary>
+        UnsignedShort,
+
+        /// <summary>The kind of the Entity is Uuid.</summary>
+        Uuid,
     }
 }
