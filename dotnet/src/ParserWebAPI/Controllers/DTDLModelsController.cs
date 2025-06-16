@@ -131,22 +131,11 @@ namespace ParserWebAPI.Controllers
                     dTDLModel.modelRelationships.Add(modelRelationship);
                 }
 
-                _context.DTDLModels.Add(dTDLModel);
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException)
-                {
-                    if (DTDLModelExists(dTDLModel.Id))
-                    {
-                        return Conflict();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+               
+
+               
+                await _context.AddOrUpdateModel(dTDLModel);
+                
 
                
             }catch(ParsingException parseException)

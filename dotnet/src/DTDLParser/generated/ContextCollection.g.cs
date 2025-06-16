@@ -958,11 +958,11 @@ namespace DTDLParser
             return new ContextHistory(versionedContexts);
         }
 
-        private static ContextHistory GetAffiliate6ContextHistory()
+        private static ContextHistory GetAffiliate8ContextHistory()
         {
             List<VersionedContext> versionedContexts = new List<VersionedContext>();
 
-            VersionedContext context1_0 = new VersionedContext("dtmi:dtdl:extension:causal;1", 1, 0, mergeDefinitions: false);
+            VersionedContext context1_0 = new VersionedContext("dtmi:dtdl:extension:causal;1", 1, 0,0,null, mergeDefinitions: false);
             context1_0.AddTermDefinition("Causal", new Dtmi("dtmi:dtdl:extension:causal:v1:Causal"), isMergeableType: false);
             versionedContexts.Add(context1_0);
 
