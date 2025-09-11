@@ -24,7 +24,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/DTDLParser
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/dtdlparser
           IMAGE_TAG=${GITHUB_SHA}
           docker build -t $IMAGE_NAME:$IMAGE_TAG .
           docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
