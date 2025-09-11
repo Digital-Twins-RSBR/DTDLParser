@@ -30,9 +30,9 @@ jobs:
         run: |
           IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/parserwebapi
           VERSION_TAG=${{ steps.nbgv.outputs.SemVer2 }}
-          
-          docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebApi/Dockerfile dotnet/src/ParserWebApi/
-          
+
+          docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebAPI/ dotnet/src/ParserWebAPI/
+
           docker push $IMAGE_NAME:$VERSION_TAG
           
           if [ "${{ github.ref_name }}" == "main" ] || [ "${{ github.ref_name }}" == "master" ]; then
