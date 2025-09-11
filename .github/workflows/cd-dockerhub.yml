@@ -1,4 +1,4 @@
-name: Push packege to DockerHub
+name: Push Package to DockerHub
 
 on:
   push:
@@ -8,10 +8,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
+
+      - uses: dotnet/nbgv@master
+        id: nbgv
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -24,9 +28,14 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/dtdlparser
-          IMAGE_TAG=${GITHUB_SHA}
-          docker build -t $IMAGE_NAME:$IMAGE_TAG .
-          docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest
-          docker push $IMAGE_NAME:$IMAGE_TAG
-          docker push $IMAGE_NAME:latest
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/parserwebapi
+          VERSION_TAG=${{ steps.nbgv.outputs.SemVer2 }}
+          
+          docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebApi/Dockerfile dotnet/src/ParserWebApi/
+          
+          docker push $IMAGE_NAME:$VERSION_TAG
+          
+          if [ "${{ github.ref_name }}" == "main" ] || [ "${{ github.ref_name }}" == "master" ]; then
+            docker tag $IMAGE_NAME:$VERSION_TAG $IMAGE_NAME:latest
+            docker push $IMAGE_NAME:latest
+          fi
