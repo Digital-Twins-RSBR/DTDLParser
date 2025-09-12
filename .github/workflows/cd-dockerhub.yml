@@ -3,7 +3,7 @@ name: Push Package to DockerHub
 on:
   push:
     branches:
-      - main
+      - feature/cd-dockerhub
 
 jobs:
   deploy:
@@ -14,6 +14,11 @@ jobs:
         with:
           fetch-depth: 0 
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '6.0.x'
+          
       - uses: dotnet/nbgv@master
         id: nbgv
 
@@ -34,7 +39,7 @@ jobs:
           docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebAPI/Dockerfile dotnet/src/
 
           docker push $IMAGE_NAME:$VERSION_TAG
-
+          
           if [ "${{ github.ref_name }}" == "main" ] || [ "${{ github.ref_name }}" == "master" ]; then
             docker tag $IMAGE_NAME:$VERSION_TAG $IMAGE_NAME:latest
             docker push $IMAGE_NAME:latest
