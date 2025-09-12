@@ -3,7 +3,7 @@ name: Push Package to DockerHub
 on:
   push:
     branches:
-      - feature/cd-dockerhub
+      - main
 
 jobs:
   deploy:
