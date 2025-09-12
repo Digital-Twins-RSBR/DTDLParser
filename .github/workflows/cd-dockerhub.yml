@@ -31,7 +31,7 @@ jobs:
           IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/parserwebapi
           VERSION_TAG=${{ steps.nbgv.outputs.SemVer2 }}
 
-          docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebAPI/Dockerfile dotnet/src/ParserWebAPI/Dockerfile
+          docker build -t $IMAGE_NAME:$VERSION_TAG -f dotnet/src/ParserWebAPI/Dockerfile dotnet/src/ParserWebAPI/
 
           docker push $IMAGE_NAME:$VERSION_TAG
           
